@@ -13,7 +13,8 @@ public class Singin extends AppCompatActivity {
     private Button btnSingup;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singin);
     }

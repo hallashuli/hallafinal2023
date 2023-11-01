@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="15dp"
     tools:context=".Singin">
 
     <LinearLayout
@@ -18,13 +19,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="62dp"
-            android:layout_margin="10dp">
+            android:layout_margin="15dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etYsername"
+                android:id="@+id/etUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
                 android:hint="User Name"
                 android:textSize="34sp"
                 android:textStyle="normal" />
@@ -33,14 +33,13 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="62dp"
-            android:layout_margin="10dp">
+            android:layout_margin="15dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPassword"
-                android:layout_width="match_parent"
-                android:layout_height="62dp"
-                android:layout_margin="8dp"
-                android:hint="password"
+                android:layout_width="343dp"
+                android:layout_height="79dp"
+                android:hint="Password"
                 android:textSize="34sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,7 +47,7 @@
             android:id="@+id/btnSingin"
             android:layout_width="match_parent"
             android:layout_height="62dp"
-            android:layout_margin="8dp"
+            android:layout_margin="20dp"
             android:text="Sing In"
             app:cornerRadius="30dp" />
 
@@ -56,7 +55,7 @@
             android:id="@+id/btnSingup"
             android:layout_width="match_parent"
             android:layout_height="62dp"
-            android:layout_margin="8dp"
+            android:layout_margin="20dp"
             android:text="Sing Up"
             app:cornerRadius="30dp" />
 

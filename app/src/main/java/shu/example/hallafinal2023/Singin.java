@@ -8,7 +8,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class Singin extends AppCompatActivity {
     private TextInputLayout etUsername;
-    private TextInputLayout etPassword;
+    private TextInputLayout etPass;
     private Button btnSingin;
     private Button btnSingup;
 
@@ -17,5 +17,8 @@ public class Singin extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singin);
+        //
+        etUsername=findViewById(R.id.etUsername);
+        etPass=findViewById(R.id.etPassword);
     }
 }

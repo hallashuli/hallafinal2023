@@ -6,6 +6,15 @@
     android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/btn_plus" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,39 +29,40 @@
                 android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="Movei" />
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="Series" />
 
         </LinearLayout>
 
         <SearchView
+            android:id="@+id/srchv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp" >
+            android:layout_margin="5dp">
 
         </SearchView>
 
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="400dp">
-
-        </ListView>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
+        <Spinner
+            android:id="@+id/spnr"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:clickable="true"
-            app:srcCompat="@android:drawable/btn_plus" />
+            android:layout_margin="5dp" />
+
+        <ListView
+            android:id="@+id/istTv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
 
     </LinearLayout>
 

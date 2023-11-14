@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class SingIn extends AppCompatActivity {
-    private TextInputEditText etUsername;
+    private TextInputEditText etEmail2;
     private TextInputEditText etPass;
     private Button btnSingin;
     private Button btnSingup;
@@ -21,7 +21,7 @@ public class SingIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singin);
         //
-        etUsername=findViewById(R.id.etUsername);
+        etUsername=findViewById(R.id.etEmail2);
         etPass=findViewById(R.id.etPassword);
     }
 

@@ -22,11 +22,11 @@
             android:layout_margin="15dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etUsername"
+                android:id="@+id/etEmail2"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:backgroundTint="@color/white"
-                android:hint="User Name"
+                android:hint="E-mail"
                 android:textSize="34sp"
                 android:textStyle="normal" />
         </com.google.android.material.textfield.TextInputLayout>

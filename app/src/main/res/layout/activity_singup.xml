@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_margin="8dp"
+            android:backgroundTint="@color/black"
             android:text="Cancel"
             android:textSize="24sp"
             app:cornerRadius="30dp" />
@@ -29,6 +30,7 @@
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
+                android:backgroundTint="@color/white"
                 android:hint="E-mail"
                 android:textSize="34sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -42,6 +44,7 @@
                 android:id="@+id/etPhonenum"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
+                android:backgroundTint="@color/white"
                 android:hint="Phone Number"
                 android:textSize="34sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -55,6 +58,7 @@
                 android:id="@+id/etUsername2"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
+                android:backgroundTint="@color/white"
                 android:hint="User Name"
                 android:textSize="34sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -68,6 +72,7 @@
                 android:id="@+id/etPassword2"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
+                android:backgroundTint="@color/white"
                 android:hint="Password"
                 android:textSize="34sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -81,6 +86,7 @@
                 android:id="@+id/etRepassword"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
+                android:backgroundTint="@color/white"
                 android:hint="re_Password"
                 android:textSize="34sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -90,6 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_margin="10dp"
+            android:backgroundTint="@color/black"
             android:text="SAVE"
             android:textSize="24sp"
             app:cornerRadius="30dp" />

@@ -31,6 +31,7 @@
                 android:layout_height="100dp"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/black"
                 android:text="Movei" />
 
             <Button
@@ -39,6 +40,7 @@
                 android:layout_height="100dp"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/black"
                 android:text="Series" />
 
         </LinearLayout>
@@ -60,7 +62,8 @@
         <ListView
             android:id="@+id/istTv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/black">
 
         </ListView>
 

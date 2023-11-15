@@ -32,29 +32,59 @@ public class SingUp extends AppCompatActivity
     }
     public void onClickSingupToMainactivity (View v)
     {
-        //to open new activity from current to next activity
-        Intent i= new Intent(SingUp.this,  MainActivity.class);
-        startActivity(i);
+        CkeckDetials();
     }
-    private void ckeckEmailPassw() {
+    private void CkeckDetials () {
         boolean isAllok = true; // يحوي نتيجة فحص الحقول ان كانت  السليمة
         String email = etEmail.getText().toString();
         //استخراج النص كلمة المرور
-        String password=etPassword2.getText().toString();
+        String password = etPassword2.getText().toString();
+        //استخراج نص الذي يحوي على الاسم
+        String name = etUsername2.getText().toString();
+        // استخراج النص الذي يحوي على كلمة المرور الجديدة
+        String rePaswword = etRepassword.getText().toString();
+        //
+        String phoneNumber=etPhonenum.getText().toString();
         //فحص الايميل ان كان طوله اقل من 6 او لا يحوي على @ فهو خطأ
-        if (email.length()<6 || email.contains("@")==false) {
+        if (email.length() < 6 || email.contains("@") == false) {
             // تعديل المتغير و يدل على انه فحص و يعطي نتيجة خاطئة
             isAllok = false;
             //عرض النتيجة خطأ في حقل الايميل
             etEmail.setError("worng email");
         }
-        if (password.length()<8 || password.contains(" ")==true){
-            isAllok=false;
+        //فحص كلمة المرور اذا كانت اقل من 6 او تحتوي على فراغ
+        if (password.length() < 6 || password.contains(" ") == true) {
+            //تعديل المتغير على ان يعطي نتيجة خاطئة
+            isAllok = false;
+            //عرض نتيجة خطأ في حقل كلمة المرور
             etPassword2.setError("worng password");
         }
-        if (isAllok){
+        //فحص الاسم يجب ان لا يحتوي على اقل من 3 حروف
+        if (name.length() < 3) {
+            //تعديل المتغير على ان يعطي نتيجة خاطئة
+            isAllok = false;
+            //عرض نتيجة اسم خاطئ في حقل الاسم
+            etUsername2.setError("worng name");
+        }
+        //فحص اذا كانت كلمة المرور الجديدة نفس الكلمة القديمة(لتأكيد كبمة المرور)
+        if (rePaswword.equals(password) == false) {
+            //تعديل المتغير على ان يعطي نتيجة خاطئة
+            isAllok = false;
+            //عرض نتيجة خطأ في الحقل
+            etRepassword.setError("worng password");
+        }
+        //فحص رقم الهاتف اذا صالح ام لا
+        if (phoneNumber.length()!=10){
+            //تعديل المتغير على ان يعطي نتيجة خاطئة
+            isAllok=false;
+            //عرض النتيجة خطأ في الحقل
+            etPhonenum.setError("worng phone number");
+        }
+        if (isAllok)
+        {
             Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
         }
+
 
     }
 

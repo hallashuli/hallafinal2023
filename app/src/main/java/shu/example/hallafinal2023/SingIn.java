@@ -21,7 +21,7 @@ public class SingIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singin);
         //
-        etUsername=findViewById(R.id.etEmail2);
+        etEmail2=findViewById(R.id.etEmail2);
         etPass=findViewById(R.id.etPassword);
     }
 
@@ -33,13 +33,20 @@ public class SingIn extends AppCompatActivity {
 
     public void onClickSinginToMainactivity(View v) {
         ckeckEmailPassw();
-
     }
-
     private void ckeckEmailPassw() {
         boolean isAllok = true; // يحوي نتيجة فحص الحقول ان كانت  السليمة
+        //
+        String email = etEmail2.getText().toString();
         //استخراج النص كلمة المرور
         String password=etPass.getText().toString();
+        //فحص الايميل ان كان طوله اقل من 6 او لا يحوي على @ فهو خطأ
+        if (email.length()<6 || email.contains("@")==false) {
+            // تعديل المتغير و يدل على انه فحص و يعطي نتيجة خاطئة
+            isAllok = false;
+            //عرض النتيجة خطأ في حقل الايميل
+            etEmail2.setError("worng email");
+        }
         //فحص الايميل ان كان طوله اقل من 6 او لا يحوي على @ فهو خطأ
         if (password.length()<8 || password.contains(" ")==true)
         {
@@ -49,7 +56,6 @@ public class SingIn extends AppCompatActivity {
         if (isAllok){
             Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
         }
-
     }
 
 }

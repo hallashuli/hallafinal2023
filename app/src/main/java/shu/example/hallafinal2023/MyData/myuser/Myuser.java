@@ -1,4 +1,4 @@
-package shu.example.hallafinal2023.MyData.MyUser;
+package shu.example.hallafinal2023.MyData.myuser;
 
 
 import androidx.room.Entity;
@@ -8,7 +8,7 @@ import androidx.room.ColumnInfo;
 //عندما نريد ان نتعامل مع هذه الفئة كجدول معطيات
 
 @Entity
-public class User {
+public class Myuser {
     @PrimaryKey(autoGenerate = true) //والذي ينتج بشكل تلقائي تحديد الصفة كمفتاح رئيسي
     public long keyid;
     @ColumnInfo(name = "fullName") // اعطاء اسم جديد للعامود في الجدول

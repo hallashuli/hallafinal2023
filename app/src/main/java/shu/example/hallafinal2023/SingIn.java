@@ -9,6 +9,10 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import shu.example.hallafinal2023.MyData.AppDatabase;
+import shu.example.hallafinal2023.MyData.myuser.Myuser;
+import shu.example.hallafinal2023.MyData.myuser.MyUserQuery;
+
 public class SingIn extends AppCompatActivity {
     private TextInputEditText etEmail2;
     private TextInputEditText etPass;
@@ -53,6 +57,19 @@ public class SingIn extends AppCompatActivity {
         }
         if (isAllok){
             Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
+            //بناء قاعدة بيانات و ارجاع المؤشر عليها
+            AppDatabase db=AppDatabase.getDB(getApplicationContext());
+            //مؤشر لكائن عمليات الجدول
+            MyUserQuery userQuery= db.getUserQuaery();
+            //ان لم يكن موجود null استدعاء العملية التي تنفذ استعلام الذي يفحص البريد و كلمة المرور و يعيد كائنًاان كان موجود
+            Myuser myuser=userQuery.checkEmailPassw(email,password);
+            if (myuser==null)//هل لا يوجد كائن حسب الايميل و الباسورود
+                Toast.makeText(this, "worng email or worng password", Toast.LENGTH_SHORT).show();
+            else {//أن كان هنالك حساب حساب ايميل او باسورود ننتقل الى الشاشة الرئيسية
+                Intent i=new Intent(SingIn.this,MainActivity.class);
+                startActivity(i);
+                finish();
+            }
         }
     }
 

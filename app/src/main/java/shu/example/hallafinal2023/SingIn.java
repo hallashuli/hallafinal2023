@@ -24,13 +24,11 @@ public class SingIn extends AppCompatActivity {
         etEmail2=findViewById(R.id.etEmail2);
         etPass=findViewById(R.id.etPassword);
     }
-
     public void onClickSinginToSingup(View v) {
         //to open new activity from current to next activity
         Intent i = new Intent(SingIn.this, SingUp.class);
         startActivity(i);
     }
-
     public void onClickSinginToMainactivity(View v) {
         ckeckEmailPassw();
     }

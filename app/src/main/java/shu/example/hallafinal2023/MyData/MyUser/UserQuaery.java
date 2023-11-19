@@ -1,4 +1,5 @@
-package shu.example.hallafinal2023.Data.Data.Myuser;
+package shu.example.hallafinal2023.MyData.MyUser;
+
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -7,6 +8,9 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import java.util.List;
+
+import shu.example.hallafinal2023.Data.Data.Data.User;
+import shu.example.hallafinal2023.MyData.MyUser.User;
 
 /**
  * الواجهة تحتوي استعلامات على قاعدة البيانات
@@ -38,9 +42,7 @@ public interface UserQuaery {
 
     @Insert
     void insert(User myUser);
+
     @Update
-    void update(User...values);
+    void update(User... values);
 }
-
-
-

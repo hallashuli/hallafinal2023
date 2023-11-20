@@ -9,8 +9,11 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-public class SingUp extends AppCompatActivity
-{
+import shu.example.hallafinal2023.MyData.AppDatabase;
+import shu.example.hallafinal2023.MyData.myuser.MyUserQuery;
+import shu.example.hallafinal2023.MyData.myuser.Myuser;
+
+public class SingUp extends AppCompatActivity {
     private Button btnCancel;
     private TextInputEditText etEmail;
     private TextInputEditText etPhonenum;
@@ -18,23 +21,24 @@ public class SingUp extends AppCompatActivity
     private TextInputEditText etPassword2;
     private TextInputEditText etRepassword;
     private Button btnSave;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singup);
 
-        etEmail=findViewById(R.id.etEmail);
-        etPhonenum=findViewById(R.id.etPhonenum);
-        etUsername2=findViewById(R.id.etUsername2);
-        etPassword2=findViewById(R.id.etPassword2);
-        etRepassword=findViewById(R.id.etRepassword);
+        etEmail = findViewById(R.id.etEmail);
+        etPhonenum = findViewById(R.id.etPhonenum);
+        etUsername2 = findViewById(R.id.etUsername2);
+        etPassword2 = findViewById(R.id.etPassword2);
+        etRepassword = findViewById(R.id.etRepassword);
     }
-    public void onClickSingupToMainactivity (View v)
-    {
+
+    public void onClickSingupToMainactivity(View v) {
         CkeckDetials();
     }
-    private void CkeckDetials () {
+
+    private void CkeckDetials() {
         boolean isAllok = true; // يحوي نتيجة فحص الحقول ان كانت  السليمة
         String email = etEmail.getText().toString();
         //استخراج النص كلمة المرور
@@ -44,7 +48,7 @@ public class SingUp extends AppCompatActivity
         // استخراج النص الذي يحوي على كلمة المرور الجديدة
         String rePaswword = etRepassword.getText().toString();
         //
-        String phoneNumber=etPhonenum.getText().toString();
+        String phoneNumber = etPhonenum.getText().toString();
         //فحص الايميل ان كان طوله اقل من 6 او لا يحوي على @ فهو خطأ
         if (email.length() < 6 || email.contains("@") == false) {
             // تعديل المتغير و يدل على انه فحص و يعطي نتيجة خاطئة
@@ -74,18 +78,35 @@ public class SingUp extends AppCompatActivity
             etRepassword.setError("worng password");
         }
         //فحص رقم الهاتف اذا صالح ام لا
-        if (phoneNumber.length()!=10){
+        if (phoneNumber.length() != 10) {
             //تعديل المتغير على ان يعطي نتيجة خاطئة
-            isAllok=false;
+            isAllok = false;
             //عرض النتيجة خطأ في الحقل
             etPhonenum.setError("worng phone number");
         }
-        if (isAllok)
-        {
-            Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
+        if (isAllok) {
+            if (isAllok) {
+                AppDatabase dp = AppDatabase.getDB(getApplicationContext());
+                MyUserQuery MyUserQuery = dp.getUserQuaery();
+                //فحص هل البريد الالكتروني موجود من قبل
+                if (MyUserQuery.checkEmail(email) != null) {
+                    etEmail.setError("found Email");
+                } else //ان لم يكن البريد موجودًا نقوم ببناء كائن للمستعمل وادخاله في الجدولMyuser المستعملين
+                {
+                    //بناء كائن
+                    Myuser myuser = new Myuser();
+                    //تحديد القيم الصفات بالقيم التي استخرجناها
+                    myuser.email = email;
+                    myuser.fullName = name;
+                    myuser.passw = password;
+                    //اضافة كائن الجديد في الجدول
+                    MyUserQuery.insert(myuser);
+                    //اغلاق الشاشة الحالية
+                }
+            }
+
+
         }
-
-
     }
-
 }
+

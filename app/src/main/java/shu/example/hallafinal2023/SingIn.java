@@ -55,7 +55,8 @@ public class SingIn extends AppCompatActivity {
             isAllok=false;
             etPass.setError("worng password");
         }
-        if (isAllok){
+        if (isAllok)
+        {
             Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
             //بناء قاعدة بيانات و ارجاع المؤشر عليها
             AppDatabase db=AppDatabase.getDB(getApplicationContext());

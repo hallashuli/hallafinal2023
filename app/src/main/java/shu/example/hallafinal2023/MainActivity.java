@@ -30,21 +30,15 @@ public class MainActivity extends AppCompatActivity {
         spnr=findViewById(R.id.spnr);
         istTv=findViewById(R.id.istTv);
         fabAdd=findViewById(R.id.fabAdd);
-        fabAdd.setOnClickListener(new View.OnClickListener ()
-        {
+        fabAdd.setOnClickListener(new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(MainActivity.this, .class);
+                Intent i=new Intent(MainActivity.this, AddMS.class);
                 startActivity(i);
                 finish();
             }
+        });
 
 
-
+        }
     }
-    //يتم استدعاء هذه الحالة عندما يكون النشاط على وشك أن يصبح مرئيًا للمستخدم. في هذه الحالة، يجب على النشاط بدء أي رسوم متحركة أو عمليات أخرى يحتاج إلى تشغيلها أثناء رؤيته.
-    @Override
-        {
-    protected void onStart() super.onResume();
-    }
-}

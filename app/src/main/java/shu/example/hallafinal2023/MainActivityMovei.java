@@ -25,8 +25,8 @@ public class MainActivityMovei extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_movei);
         btnM=findViewById(R.id.btnM);
-        spnr=findViewById(R.id.spnr);
-        istTv=findViewById(R.id.istTv);
+        spnr=findViewById(R.id.spnrM);
+        istTv=findViewById(R.id.istTvM);
         fabAdd=findViewById(R.id.fabAdd);
         fabAdd.setOnClickListener(new View.OnClickListener () {
             @Override

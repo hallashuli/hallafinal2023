@@ -2,19 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivityMovei">
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:clickable="true"
-        app:backgroundTint="@color/white"
-        app:srcCompat="@android:drawable/ic_menu_add" />
+    tools:context=".MainActivitySeries">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +12,7 @@
         android:orientation="vertical">
 
         <SearchView
-            android:id="@+id/srchvM"
+            android:id="@+id/srchS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp">
@@ -30,20 +20,16 @@
         </SearchView>
 
         <Spinner
-            android:id="@+id/spnrM"
+            android:id="@+id/spnrS"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_margin="10dp" />
+            android:layout_margin="10dp"
+            android:layout_weight="0" />
 
         <ListView
-            android:id="@+id/istTvM"
+            android:id="@+id/istvS"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:backgroundTint="@color/black">
-
-        </ListView>
-
+            android:layout_margin="10dp" />
     </LinearLayout>
-
 </RelativeLayout>

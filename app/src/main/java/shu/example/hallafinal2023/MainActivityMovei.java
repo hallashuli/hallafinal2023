@@ -12,10 +12,9 @@ import android.widget.Spinner;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivityMovei extends AppCompatActivity {
     private FloatingActionButton fabAdd;
     private Button btnM;
-    private Button btnS;
     private SearchView srchv;
     private Spinner spnr;
     private ListView istTv;
@@ -24,16 +23,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_movei);
         btnM=findViewById(R.id.btnM);
-        btnS=findViewById(R.id.btnS);
         spnr=findViewById(R.id.spnr);
         istTv=findViewById(R.id.istTv);
         fabAdd=findViewById(R.id.fabAdd);
         fabAdd.setOnClickListener(new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(MainActivity.this, AddMS.class);
+                Intent i=new Intent(MainActivityMovei.this, Addmovei.class);
                 startActivity(i);
                 finish();
             }

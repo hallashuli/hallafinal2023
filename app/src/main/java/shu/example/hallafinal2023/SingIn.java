@@ -67,7 +67,7 @@ public class SingIn extends AppCompatActivity {
             if (myuser==null)//هل لا يوجد كائن حسب الايميل و الباسورود
                 Toast.makeText(this, "worng email or worng password", Toast.LENGTH_SHORT).show();
             else {//أن كان هنالك حساب حساب ايميل او باسورود ننتقل الى الشاشة الرئيسية
-                Intent i=new Intent(SingIn.this,MainActivity.class);
+                Intent i=new Intent(SingIn.this, MainActivityMovei.class);
                 startActivity(i);
                 finish();
             }

@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".MainActivitySeries">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/faBaDd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:clickable="true"
+        app:backgroundTint="@color/white"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,6 +40,8 @@
             android:id="@+id/istvS"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp" />
+            android:layout_margin="10dp"></ListView>
+
+
     </LinearLayout>
 </RelativeLayout>

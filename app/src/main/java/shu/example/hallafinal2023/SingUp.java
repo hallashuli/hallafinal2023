@@ -34,7 +34,7 @@ public class SingUp extends AppCompatActivity {
         etRepassword = findViewById(R.id.etRepassword);
     }
 
-    public void onClickSingupToMainactivity(View v) {
+    public void onClickSingupToMainactivityChoose(View v) {
         CkeckDetials();
     }
 
@@ -47,7 +47,7 @@ public class SingUp extends AppCompatActivity {
         String name = etUsername2.getText().toString();
         // استخراج النص الذي يحوي على كلمة المرور الجديدة
         String rePaswword = etRepassword.getText().toString();
-        //
+        //فحص رقم الهاتف
         String phoneNumber = etPhonenum.getText().toString();
         //فحص الايميل ان كان طوله اقل من 6 او لا يحوي على @ فهو خطأ
         if (email.length() < 6 || email.contains("@") == false) {
@@ -105,9 +105,12 @@ public class SingUp extends AppCompatActivity {
                     finish();
                 }
             }
-
-
         }
+    }
+    public void onClickSingUptoSingIn(View v) {
+        //to open new activity from current to next activity
+        Intent i = new Intent(SingUp.this, SingIn.class);
+        startActivity(i);
     }
 }
 

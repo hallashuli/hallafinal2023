@@ -21,7 +21,7 @@ public class MainActivityMovei extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_movei);
+        setContentView(R.layout.activity_main_movie);
         spnr=findViewById(R.id.spnrM);
         istTv=findViewById(R.id.istTvM);
         fabAdd=findViewById(R.id.fabAdd);

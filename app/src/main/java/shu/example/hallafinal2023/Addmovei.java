@@ -22,7 +22,7 @@ public class Addmovei extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_addmovei);
+        setContentView(R.layout.activity_addmovie);
         //
         text1=findViewById(R.id.text1);
         text2=findViewById(R.id.text2);

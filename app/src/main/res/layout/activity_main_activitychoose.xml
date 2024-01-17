@@ -12,19 +12,23 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/bM"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_margin="100dp"
-            android:text="Movei"
+            android:backgroundTint="@color/black"
+            android:text="Movie"
+            android:textSize="30dp"
             app:cornerRadius="30dp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/bS"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_margin="100dp"
+            android:backgroundTint="@color/black"
             android:text="Series"
+            android:textSize="30dp"
             app:cornerRadius="30dp" />
     </LinearLayout>
 </RelativeLayout>

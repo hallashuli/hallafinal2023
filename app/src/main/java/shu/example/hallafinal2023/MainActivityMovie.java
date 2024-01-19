@@ -11,7 +11,7 @@ import android.widget.Spinner;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class MainActivityMovei extends AppCompatActivity {
+public class MainActivityMovie extends AppCompatActivity {
     private FloatingActionButton fabAdd;
     private SearchView srchv;
     private Spinner spnr;
@@ -28,7 +28,7 @@ public class MainActivityMovei extends AppCompatActivity {
         fabAdd.setOnClickListener(new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(MainActivityMovei.this, Addmovei.class);
+                Intent i=new Intent(MainActivityMovie.this, AddMovie.class);
                 startActivity(i);
                 finish();
             }

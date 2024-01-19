@@ -13,14 +13,24 @@ public class MainActivitychoose extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activitychoose);
-        @Override
-        public void onClickChooseToMovie(View view) {
-            Intent i=new Intent(MainActivitychoose.this, MainActivityMovei.class);
-            startActivity(i);
-            finish();
-        }
-    });
+        bM = findViewById(R.id.bM);
+        bS = findViewById(R.id.bS);
     }
+        public void onClickChoosetoMovei(View v) {
+            Intent i=new Intent(MainActivitychoose.this, MainActivityMovie.class);
+            startActivity(i);
+        }
+        public void onClickChoosetoSeries(View v) {
+             Intent i=new Intent(MainActivitychoose.this, MainActivitySeries.class);
+             startActivity(i);
+    }
+
+
+}
+
+
+
 

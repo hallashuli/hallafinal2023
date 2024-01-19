@@ -10,7 +10,7 @@ import android.widget.EditText;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-public class Addmovei extends AppCompatActivity {
+public class AddMovie extends AppCompatActivity {
     private TextInputEditText text1;
     private TextInputEditText text2;
     private TextInputEditText text3;
@@ -32,7 +32,7 @@ public class Addmovei extends AppCompatActivity {
     }
     public void onClickAddmoveiToReating(View v) {
         //to open new activity from current to next activity
-        Intent i = new Intent(Addmovei.this, Reating.class);
+        Intent i = new Intent(AddMovie.this, Reating.class);
         startActivity(i);
     }
 

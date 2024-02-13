@@ -6,14 +6,14 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Film {
     @PrimaryKey(autoGenerate = true) //والذي ينتج بشكل تلقائي تحديد الصفة كمفتاح رئيسي
-    //
+    //اسم الفيلم
     public String FilmName;
-    //
+    //نوع الفيلم
     public String Type;
     public Double Time;
-    //
+    //لغة الفيلم
     public String Langage;
-    //
+    //رقم الموسم
     public Integer SeosonNuumber;
 
     /**

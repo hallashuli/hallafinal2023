@@ -6,7 +6,6 @@ import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
 // جدول
 //عندما نريد ان نتعامل مع هذه الفئة كجدول معطيات
-
 @Entity
 public class Myuser {
     @PrimaryKey(autoGenerate = true) //والذي ينتج بشكل تلقائي تحديد الصفة كمفتاح رئيسي
@@ -16,7 +15,7 @@ public class Myuser {
     public String email; // في حال لم يتم اعطاء اسم جديد للعامود يكون اسم الصفة هو اسم العامود
     public String phone;
     public String passw;
-
+//ToString
     @Override
     public String toString() {
         return "newuser{" +

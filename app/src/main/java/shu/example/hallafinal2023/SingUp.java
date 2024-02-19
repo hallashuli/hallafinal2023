@@ -171,7 +171,6 @@ public class SingUp extends AppCompatActivity {
                     if (task.isSuccessful()) {//
                         saveUser_FB(email,name,phone,password);
                         Toast.makeText(SingUp.this, "Signing up Succeeded", Toast.LENGTH_SHORT).show();
-                        finish();
                     } else {
                         Toast.makeText(SingUp.this, "Signing up Failed", Toast.LENGTH_SHORT).show();
                         etEmail.setError(task.getException().getMessage());//

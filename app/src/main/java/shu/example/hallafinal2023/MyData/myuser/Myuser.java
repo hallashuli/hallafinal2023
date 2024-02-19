@@ -15,16 +15,27 @@ public class Myuser {
     public String email; // في حال لم يتم اعطاء اسم جديد للعامود يكون اسم الصفة هو اسم العامود
     public String phone;
     public String passw;
-//ToString
+
     @Override
     public String toString() {
-        return "newuser{" +
+        return "Myuser{" +
                 "keyid=" + keyid +
                 ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", passw='" + passw + '\'' +
+                ", id='" + id + '\'' +
                 '}';
+    }
+
+    public String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFullName() {

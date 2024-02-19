@@ -115,7 +115,6 @@ public class SingUp extends AppCompatActivity {
             }
         }
     }
-
     public void onClickSingUptoSingIn(View v) {
         //to open new activity from current to next activity
         Intent i = new Intent(SingUp.this, SingIn.class);
@@ -194,9 +193,9 @@ public class SingUp extends AppCompatActivity {
         user.setPassw(password);
         user.setId(uid);
         //اضافة كائن لمجموعة المستعملين ومعالج حدث لفحص نجاح الاضافة
-        db.collection("MyUsers").add(user).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+        db.collection("MyUsers").document(uid).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onComplete(@NonNull Task<DocumentReference> task) {
+            public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(SingUp.this, "Succeed to add User", Toast.LENGTH_SHORT).show();
                     finish();

@@ -10,6 +10,7 @@ public class Film {
     public String FilmName;
     //نوع الفيلم
     public String Type;
+    //مدة الفيلم
     public Double Time;
     //لغة الفيلم
     public String Langage;

@@ -1,5 +1,6 @@
 package shu.example.hallafinal2023;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,10 +8,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import shu.example.hallafinal2023.MyData.MyFilmTable.Movei;
+import shu.example.hallafinal2023.MyData.myuser.Myuser;
 
 public class AddMovie extends AppCompatActivity {
     private TextInputEditText name1;
@@ -37,13 +44,43 @@ public class AddMovie extends AppCompatActivity {
         Intent i = new Intent(AddMovie.this, Reating.class);
         startActivity(i);
     }
+    private void cheackMoveiDetails(){
+        boolean isAllok = true; // يحوي نتيجة فحص الحقول ان كانت  السليمة
+        //
+        String nam
+
+    }
+
     //Firebase
     private void saveUser_FB(String name1,String Type1,String lang1,Integer seoson1 )
     {
         //
-        FirebaseFirestore dp=FirebaseFirestore.getInstance();
         //
-        
+
+
+        //مؤشر لقاعدة البيانات
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        //استخراج الرقم المميز للمستعمل الذي سجل الدخول
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        //بناء الكائن الذي سيتم حفظه
+        Movei movei=new Movei();
+        movei.setMoveiName(name1);
+        movei.setLangage(lang1);
+        movei.setType(Type1);
+        movei.setSeosonNuumber(seoson1);
+        movei.setMid(movei.Mid);
+        //اضافة كائن لمجموعة المستعملين ومعالج حدث لفحص نجاح الاضافة
+        db.collection("MyUsers").document(uid).set(movei).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(AddMovie.this, "Succeed to add User", Toast.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    Toast.makeText(AddMovie.this, "Failed to add user", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 }

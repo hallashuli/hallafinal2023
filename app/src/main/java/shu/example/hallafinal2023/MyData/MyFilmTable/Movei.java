@@ -6,8 +6,8 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Movei {
     @PrimaryKey(autoGenerate = true) //والذي ينتج بشكل تلقائي تحديد الصفة كمفتاح رئيسي
-
-    public long Mid;
+    //رقم الفيلم
+    public String Mid;
     //اسم الفيلم
     public String MoveiName;
     //نوع الفيلم
@@ -19,49 +19,12 @@ public class Movei {
     //رقم الموسم
     public Integer SeosonNuumber;
 
-
-
-    /**
-     * Gitter
-     **/
-    public String MoveiName(){return MoveiName;}
-    public String Type(){return Type;}
-    public Double Time(){return Time;}
-    public String Langage(){return Langage;}
-    public Integer SeosonNuber(){ return SeosonNuumber;}
-
-    /**
-     * Sitter
-     **/
-    public void setFilmName(String name) {
-        MoveiName = name;
-    }
-    public void setType(String type) {
-        Type = type;
-    }
-    public void setTime(Double time) {
-        Time = time;
-    }
-    public void setLangage(String langage) {
-        Langage = langage;
-    }
-    public void setSeosonNuumber(Integer seosonNuumber) {
-        SeosonNuumber = seosonNuumber;
+    public String getMid() {
+        return Mid;
     }
 
-    /**
-     * toString
-     **/
-    @Override
-    public String toString() {
-        return "Movei{" +
-                "Mid=" + Mid +
-                ", MoveiName='" + MoveiName + '\'' +
-                ", Type='" + Type + '\'' +
-                ", Time=" + Time +
-                ", Langage='" + Langage + '\'' +
-                ", SeosonNuumber=" + SeosonNuumber +
-                '}';
+    public void setMid(String mid) {
+        Mid = mid;
     }
 
     public String getMoveiName() {
@@ -76,23 +39,43 @@ public class Movei {
         return Type;
     }
 
+    public void setType(String type) {
+        Type = type;
+    }
+
     public Double getTime() {
         return Time;
+    }
+
+    public void setTime(Double time) {
+        Time = time;
     }
 
     public String getLangage() {
         return Langage;
     }
 
+    public void setLangage(String langage) {
+        Langage = langage;
+    }
+
     public Integer getSeosonNuumber() {
         return SeosonNuumber;
     }
 
-    public long getMid() {
-        return Mid;
+    public void setSeosonNuumber(Integer seosonNuumber) {
+        SeosonNuumber = seosonNuumber;
     }
 
-    public void setMid(long mid) {
-        Mid = mid;
+    @Override
+    public String toString() {
+        return "Movei{" +
+                "Mid='" + Mid + '\'' +
+                ", MoveiName='" + MoveiName + '\'' +
+                ", Type='" + Type + '\'' +
+                ", Time=" + Time +
+                ", Langage='" + Langage + '\'' +
+                ", SeosonNuumber=" + SeosonNuumber +
+                '}';
     }
 }

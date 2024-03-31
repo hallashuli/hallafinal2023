@@ -19,6 +19,8 @@ public class Movei {
     //رقم الموسم
     public Integer SeosonNuumber;
 
+
+
     /**
      * Gitter
      **/
@@ -52,22 +54,14 @@ public class Movei {
      **/
     @Override
     public String toString() {
-        return "Film{" +
-                "Name='" + MoveiName + '\'' +
+        return "Movei{" +
+                "Mid=" + Mid +
+                ", MoveiName='" + MoveiName + '\'' +
                 ", Type='" + Type + '\'' +
                 ", Time=" + Time +
                 ", Langage='" + Langage + '\'' +
                 ", SeosonNuumber=" + SeosonNuumber +
                 '}';
-    }
-    public String idM;
-
-    public String getIdM() {
-        return idM;
-    }
-
-    public void setId(String idM) {
-        this.idM = idM;
     }
 
     public String getMoveiName() {
@@ -94,7 +88,11 @@ public class Movei {
         return SeosonNuumber;
     }
 
-    public void setIdM(String idM) {
-        this.idM = idM;
+    public long getMid() {
+        return Mid;
+    }
+
+    public void setMid(long mid) {
+        Mid = mid;
     }
 }

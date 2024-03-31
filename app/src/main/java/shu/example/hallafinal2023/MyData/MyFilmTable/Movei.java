@@ -4,10 +4,12 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Film {
+public class Movei {
     @PrimaryKey(autoGenerate = true) //والذي ينتج بشكل تلقائي تحديد الصفة كمفتاح رئيسي
+
+    public long Mid;
     //اسم الفيلم
-    public String FilmName;
+    public String MoveiName;
     //نوع الفيلم
     public String Type;
     //مدة الفيلم
@@ -20,7 +22,7 @@ public class Film {
     /**
      * Gitter
      **/
-    public String FilmName(){return FilmName;}
+    public String MoveiName(){return MoveiName;}
     public String Type(){return Type;}
     public Double Time(){return Time;}
     public String Langage(){return Langage;}
@@ -30,7 +32,7 @@ public class Film {
      * Sitter
      **/
     public void setFilmName(String name) {
-        FilmName = name;
+        MoveiName = name;
     }
     public void setType(String type) {
         Type = type;
@@ -51,11 +53,48 @@ public class Film {
     @Override
     public String toString() {
         return "Film{" +
-                "Name='" + FilmName + '\'' +
+                "Name='" + MoveiName + '\'' +
                 ", Type='" + Type + '\'' +
                 ", Time=" + Time +
                 ", Langage='" + Langage + '\'' +
                 ", SeosonNuumber=" + SeosonNuumber +
                 '}';
+    }
+    public String idM;
+
+    public String getIdM() {
+        return idM;
+    }
+
+    public void setId(String idM) {
+        this.idM = idM;
+    }
+
+    public String getMoveiName() {
+        return MoveiName;
+    }
+
+    public void setMoveiName(String moveiName) {
+        MoveiName = moveiName;
+    }
+
+    public String getType() {
+        return Type;
+    }
+
+    public Double getTime() {
+        return Time;
+    }
+
+    public String getLangage() {
+        return Langage;
+    }
+
+    public Integer getSeosonNuumber() {
+        return SeosonNuumber;
+    }
+
+    public void setIdM(String idM) {
+        this.idM = idM;
     }
 }

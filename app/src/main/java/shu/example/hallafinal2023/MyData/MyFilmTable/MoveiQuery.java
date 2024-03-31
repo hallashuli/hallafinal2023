@@ -5,14 +5,14 @@ import androidx.room.Query;
 import androidx.room.Update;
 import java.util.List;
 @Dao // واجهة استعلامات على جدول المعطيات
-public interface FilmQuery {
+public interface MoveiQuery {
     /***اعادة جميع معطيات الجدول**/
-    @Query("Select* From Film")
-    List<Film> getAllFilm();
+    @Query("Select* From Movei")
+    List<Movei> getAllFilm();
     /***ادخال مجموعة من الافلام **/
     @Insert
-    void insertFilm(Film... f); // القاط يمكن ادخال كائن او مجموعة
+    void insertFilm(Movei... f); // القاط يمكن ادخال كائن او مجموعة
     /*** تعديل */
     @Update
-    void updateFilm(Film film);
+    void updateFilm(Movei film);
 }

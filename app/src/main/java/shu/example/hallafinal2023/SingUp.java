@@ -3,7 +3,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -55,11 +57,10 @@ public class SingUp extends AppCompatActivity {
         imgBtnl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
+                    //upload: 8
+                    checkPermission();
             }
         });
-
     }
 
     public void onClickSingupToMainactivityChoose(View v) {
@@ -270,8 +271,27 @@ public class SingUp extends AppCompatActivity {
             pickImageFromGallery();
         }
     }
+    //upload: 7
+    /**
+     * @param requestCode The request code passed in מספר בקשת ההרשאה
+     * @param permissions The requested permissions. Never null. רשימת ההרשאות לאישור
+     * @param grantResults The grant results for the corresponding permissions תוצאה עבור כל הרשאה
+     *   PERMISSION_GRANTED אושר or PERMISSION_DENIED נדחה . Never null.
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode==PERMISSION_CODE) {//בדיקת קוד בקשת ההרשאה
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //permission was granted אם יש אישור
+                pickImageFromGallery();
+            } else {
+                //permission was denied אם אין אישור
+                Toast.makeText(this, "Permission denied...!", Toast.LENGTH_SHORT).show();
+            }
+        }
 
-
+    }
 
 
 

@@ -293,8 +293,6 @@ public class SingUp extends AppCompatActivity {
 
     }
 
-
-
     public void onClickSingupToSinginFireBace (View v){
         checkAndSignUP_FB();
     }

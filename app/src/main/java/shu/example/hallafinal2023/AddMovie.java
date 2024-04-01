@@ -32,7 +32,7 @@ public class AddMovie extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addmovie);
-        //
+        //توقيت الصفات
         name1=findViewById(R.id.name1);
         Type1=findViewById(R.id.Type1);
         lang1=findViewById(R.id.lang1);
@@ -47,17 +47,20 @@ public class AddMovie extends AppCompatActivity {
     private void cheackMoveiDetails(){
         boolean isAllok = true; // يحوي نتيجة فحص الحقول ان كانت  السليمة
         //
-        String nam
+        String Name= name1.getText().toString();
+        //
+        String Type= Type1.getText().toString();
+        //
+        String Langage= lang1.getText().toString();
+        //
+        String Seoson= seoson1.getText().toString();
+        //
+        String Time= time.getText().toString();
 
     }
-
     //Firebase
     private void saveUser_FB(String name1,String Type1,String lang1,Integer seoson1 )
     {
-        //
-        //
-
-
         //مؤشر لقاعدة البيانات
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         //استخراج الرقم المميز للمستعمل الذي سجل الدخول

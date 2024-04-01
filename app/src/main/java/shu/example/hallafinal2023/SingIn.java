@@ -28,7 +28,7 @@ public class SingIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singin);
-        //
+        //توثيق صفات
         etEmail2 = findViewById(R.id.etEmail2);
         etPass = findViewById(R.id.etPassword);
     }
@@ -45,7 +45,7 @@ public class SingIn extends AppCompatActivity {
 
     private void ckeckEmailPassw() {
         boolean isAllok = true; // يحوي نتيجة فحص الحقول ان كانت  السليمة
-        //
+        //استخراج نص البريد الالكتروني
         String email = etEmail2.getText().toString();
         //استخراج النص كلمة المرور
         String password = etPass.getText().toString();
@@ -88,13 +88,13 @@ public class SingIn extends AppCompatActivity {
                     {
                         if (task.isSuccessful()) {//
                             Toast.makeText(SingIn.this, "Signing up Succeeded", Toast.LENGTH_SHORT).show();
-                            //
+                            //מעבר למסך הראשי
                             Intent intent=new Intent(SingIn.this,MainActivitychoose.class);
                             startActivity(intent);
                         }
                         else {
                             Toast.makeText(SingIn.this, "Signing up Failed", Toast.LENGTH_SHORT).show();
-                            etEmail2.setError(task.getException().getMessage());//
+                            etEmail2.setError(task.getException().getMessage());//הצגת הודעות השגיאה שהקבלה מהען
                         }
                     }
                 });

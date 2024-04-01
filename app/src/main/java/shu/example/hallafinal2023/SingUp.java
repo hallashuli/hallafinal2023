@@ -3,9 +3,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,17 +31,35 @@ public class SingUp extends AppCompatActivity {
     private TextInputEditText etPassword2;
     private TextInputEditText etRepassword;
     private Button btnSave;
+    //upload: 1 add Xml image view or button and upload button
+//upload: 2 add next fileds
+    private final int IMAGE_PICK_CODE=100;// קוד מזהה לבקשת בחירת תמונה
+    private final int PERMISSION_CODE=101;//קוד מזהה לבחירת הרשאת גישה לקבצים
+    private ImageButton imgBtnl;//כפתור/ לחצן לבחירת תמונה והצגתה
+    private Uri toUploadimageUri;// כתוב הקובץ(תמונה) שרוצים להעלות
+    private Uri downladuri;//כתובת הקוץ בענן אחרי ההעלאה
+    private Myuser myTask;//עצם/נתון שרוצים לשמור
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singup);
-
+        //توثيق صفات
         etEmail = findViewById(R.id.etEmail);
         etPhonenum = findViewById(R.id.etPhonenum);
         etUsername2 = findViewById(R.id.etUsername2);
         etPassword2 = findViewById(R.id.etPassword2);
         etRepassword = findViewById(R.id.etRepassword);
+        //upload: 3
+        imgBtnl=findViewById(R.id. imgBtnl);
+        imgBtnl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+            }
+        });
+
     }
 
     public void onClickSingupToMainactivityChoose(View v) {
@@ -204,6 +224,56 @@ public class SingUp extends AppCompatActivity {
             }
         });
     }
+    private void pickImageFromGallery(){
+        //implicit intent (מרומז) to pick image
+        Intent intent=new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent,IMAGE_PICK_CODE);//הפעלתה האינטנט עם קוד הבקשה
+    }
+    //upload: 5:handle result of picked images
+    /**
+     *
+     * @param requestCode מספר הקשה
+     * @param resultCode תוצאה הבקשה (אם נבחר משהו או בוטלה)
+     * @param data הנתונים שנבחרו
+     */
+    @Override
+    protected void onActivityResult(int requestCode,int resultCode,Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        //אם נבחר משהו ואם זה קוד בקשת התמונה
+        if (resultCode==RESULT_OK && requestCode== IMAGE_PICK_CODE){
+            //a עידכון תכונת כתובת התמונה
+            toUploadimageUri = data.getData();//קבלת כתובת התמונה הנתונים שניבחרו
+            imgBtnl.setImageURI(toUploadimageUri);// הצגת התמונה שנבחרה על רכיב התמונה
+        }
+    }
+    //upload: 6
+    /**
+     * בדיקה האם יש הרשאה לגישה לקבצים בטלפון
+     */
+    private void checkPermission()
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {//בדיקת גרסאות
+            //בדיקה אם ההשאה לא אושרה בעבר
+            if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                //רשימת ההרשאות שרוצים לבקש אישור
+                String[] permissions = {android.Manifest.permission.READ_EXTERNAL_STORAGE};
+                //בקשת אישור ההשאות (שולחים קוד הבקשה)
+                //התשובה תתקבל בפעולה onRequestPermissionsResult
+                requestPermissions(permissions, PERMISSION_CODE);
+            } else {
+                //permission already granted אם יש הרשאה מקודם אז מפעילים בחירת תמונה מהטלפון
+                pickImageFromGallery();
+            }
+        }
+        else {//אם גרסה ישנה ולא צריך קבלת אישור
+            pickImageFromGallery();
+        }
+    }
+
+
+
+
 
     public void onClickSingupToSinginFireBace (View v){
         checkAndSignUP_FB();

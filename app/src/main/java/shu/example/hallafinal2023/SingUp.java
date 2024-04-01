@@ -2,6 +2,7 @@ package shu.example.hallafinal2023;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -292,6 +293,9 @@ public class SingUp extends AppCompatActivity {
         }
 
     }
+
+
+
 
     public void onClickSingupToSinginFireBace (View v){
         checkAndSignUP_FB();

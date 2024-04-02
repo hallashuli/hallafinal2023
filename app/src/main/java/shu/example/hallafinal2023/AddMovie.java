@@ -18,7 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import shu.example.hallafinal2023.MyData.MyFilmTable.Movei;
-import shu.example.hallafinal2023.MyData.myuser.Myuser;
 
 public class AddMovie extends AppCompatActivity {
     private TextInputEditText name1;
@@ -88,25 +87,11 @@ public class AddMovie extends AppCompatActivity {
             name1.setError("worng Time");
         }
         if (isAllok) {
-            //كائن لعملية تسجيل
-            FirebaseAuth auth = FirebaseAuth.getInstance();
-            //יצירת חשבון בעזרת מיל ו סיסמא
-            auth.createAddMoveiFireBase(name1,Type1,seoson1,lang1,time).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override //התגובה שמתקבל הנסיון הרשיום בען
-                public void onComplete(@NonNull Task<AuthResult> task) // הפרמטר מכיל מידע מהשרת על תוצאת הבקשה לרישום
-                {
-                    if (task.isSuccessful()) {//
-                        saveUser_FB(name1,time,Type1,seoson1,lang1);
-                        Toast.makeText(AddMovie.this, "Signing up Succeeded", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(AddMovie.this, "Signing up Failed", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+            saveMovei_FB(Name,Type,Langage,Seoson,Time);
         }
     }
     //Firebase
-    private void saveUser_FB(String name1,String Type1,String lang1,Integer seoson1 )
+    private void saveMovei_FB(String name1, String Type1, String lang1, String seoson1,String time )
     {
         //مؤشر لقاعدة البيانات
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -118,16 +103,17 @@ public class AddMovie extends AppCompatActivity {
         movei.setLangage(lang1);
         movei.setType(Type1);
         movei.setSeosonNuumber(seoson1);
+        movei.setTime(time);
         movei.setMid(movei.Mid);
         //اضافة كائن لمجموعة المستعملين ومعالج حدث لفحص نجاح الاضافة
         db.collection("MyUsers").document(uid).set(movei).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(AddMovie.this, "Succeed to add User", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddMovie.this, "Succeed to add Movei", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    Toast.makeText(AddMovie.this, "Failed to add user", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddMovie.this, "Failed to add Movei", Toast.LENGTH_SHORT).show();
                 }
             }
         });

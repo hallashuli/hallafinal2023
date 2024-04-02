@@ -13,11 +13,11 @@ public class Movei {
     //نوع الفيلم
     public String Type;
     //مدة الفيلم
-    public Double Time;
+    public String Time;
     //لغة الفيلم
     public String Langage;
     //رقم الموسم
-    public Integer SeosonNuumber;
+    public String SeosonNuumber;
 
     public String getMid() {
         return Mid;
@@ -43,12 +43,20 @@ public class Movei {
         Type = type;
     }
 
-    public Double getTime() {
+    public String getTime() {
         return Time;
     }
 
-    public void setTime(Double time) {
+    public void setTime(String time) {
         Time = time;
+    }
+
+    public String getSeosonNuumber() {
+        return SeosonNuumber;
+    }
+
+    public void setSeosonNuumber(String seosonNuumber) {
+        SeosonNuumber = seosonNuumber;
     }
 
     public String getLangage() {
@@ -59,13 +67,7 @@ public class Movei {
         Langage = langage;
     }
 
-    public Integer getSeosonNuumber() {
-        return SeosonNuumber;
-    }
 
-    public void setSeosonNuumber(Integer seosonNuumber) {
-        SeosonNuumber = seosonNuumber;
-    }
 
     @Override
     public String toString() {

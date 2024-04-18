@@ -11,8 +11,8 @@ public interface MoveiQuery {
     List<Movei> getAllFilm();
     /***ادخال مجموعة من الافلام **/
     @Insert
-    void insertFilm(Movei... f); // القاط يمكن ادخال كائن او مجموعة
+    void insertFilm(Movei... moveis); // القاط يمكن ادخال كائن او مجموعة
     /*** تعديل */
     @Update
-    void updateFilm(Movei film);
+    void updateFilm(Movei movei);
 }

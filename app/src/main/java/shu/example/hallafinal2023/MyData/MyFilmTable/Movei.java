@@ -18,11 +18,10 @@ public class Movei {
     public String Langage;
     //رقم الموسم
     public String SeosonNuumber;
-
+    //gitter+sitter
     public String getMid() {
         return Mid;
     }
-
     public void setMid(String mid) {
         Mid = mid;
     }
@@ -30,7 +29,6 @@ public class Movei {
     public String getMoveiName() {
         return MoveiName;
     }
-
     public void setMoveiName(String moveiName) {
         MoveiName = moveiName;
     }
@@ -38,37 +36,19 @@ public class Movei {
     public String getType() {
         return Type;
     }
-
     public void setType(String type) {
         Type = type;
     }
 
-    public String getTime() {
-        return Time;
-    }
+    public String getTime() {return Time;}
+    public void setTime(String time) {Time = time;}
 
-    public void setTime(String time) {
-        Time = time;
-    }
+    public String getSeosonNuumber() {return SeosonNuumber;}
+    public void setSeosonNuumber(String seosonNuumber) {SeosonNuumber = seosonNuumber;}
 
-    public String getSeosonNuumber() {
-        return SeosonNuumber;
-    }
-
-    public void setSeosonNuumber(String seosonNuumber) {
-        SeosonNuumber = seosonNuumber;
-    }
-
-    public String getLangage() {
-        return Langage;
-    }
-
-    public void setLangage(String langage) {
-        Langage = langage;
-    }
-
-
-
+    public String getLangage() {return Langage;}
+    public void setLangage(String langage) {Langage = langage;}
+    //to String
     @Override
     public String toString() {
         return "Movei{" +

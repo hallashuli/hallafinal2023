@@ -17,6 +17,7 @@
             android:layout_margin="15dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name2"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_margin="10dp"
@@ -30,6 +31,7 @@
             android:layout_margin="15dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/type2"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_margin="10dp"
@@ -37,7 +39,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <EditText
-            android:id="@+id/editTextNumber"
+            android:id="@+id/Time2"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_margin="15dp"
@@ -51,6 +53,7 @@
             android:layout_margin="15dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/lang2"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_margin="10dp"
@@ -63,6 +66,7 @@
             android:layout_margin="15dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/num2"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_margin="10dp"
@@ -71,7 +75,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_margin="8dp"
@@ -79,7 +83,7 @@
             app:cornerRadius="30dp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btn2"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_margin="8dp"

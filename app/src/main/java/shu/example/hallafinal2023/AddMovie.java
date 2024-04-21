@@ -27,7 +27,6 @@ public class AddMovie extends AppCompatActivity {
     private EditText time;
     private Button btnsave2;
     private Button btncancel2;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

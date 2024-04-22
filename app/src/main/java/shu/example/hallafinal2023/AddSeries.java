@@ -50,6 +50,7 @@ public class AddSeries extends AppCompatActivity {
         String EpisodeNumber = num2.getText().toString();
         //يستخرج مدة المسلسل
         String Time = time2.getText().toString();
+        //يفحص تفاصيل المسلسل
         if (name2.length() < 0) {
             // تعديل المتغير و يدل على انه فحص و يعطي نتيجة خاطئة
             isAllok = false;
@@ -84,14 +85,14 @@ public class AddSeries extends AppCompatActivity {
         }
     }
         //Firebase
-        private void saveSeries_FB(String name2, String Type2, String lang2, String num2,String time2 )
+        private void saveSeries_FB(String name2, String type2, String lang2, String num2,String time2 )
         {
             //مؤشر لقاعدة البيانات
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             //استخراج الرقم المميز للمستعمل الذي سجل الدخول
             String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
             //بناء الكائن الذي سيتم حفظه
-            ٍSeries series=new Series();
+            Series series=new Series();
             series.setSeriesName(name2);
             series.setSeriesLangage(lang2);
             series.setSeriesType(type2);

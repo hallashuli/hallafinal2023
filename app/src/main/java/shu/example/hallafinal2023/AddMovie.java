@@ -43,17 +43,18 @@ public class AddMovie extends AppCompatActivity {
         Intent i = new Intent(AddMovie.this, Reating.class);
         startActivity(i);
     }
+
     private void cheackMoveiDetails(){
         boolean isAllok = true; // يحوي نتيجة فحص الحقول ان كانت  السليمة
-        //
+        //يستخرج اسم الفيلم
         String Name= name1.getText().toString();
-        //
+        //يستخرج نوع الفيلم
         String Type= Type1.getText().toString();
-        //
+        //يستخرج نوع اللغة
         String Langage= lang1.getText().toString();
-        //
+        //يستخرج عدد مواسم المسلسل
         String Seoson= seoson1.getText().toString();
-        //
+        //يستخرج وقت الفيلم
         String Time= time.getText().toString();
         if (name1.length() < 0){
             // تعديل المتغير و يدل على انه فحص و يعطي نتيجة خاطئة
@@ -71,19 +72,19 @@ public class AddMovie extends AppCompatActivity {
             // تعديل المتغير و يدل على انه فحص و يعطي نتيجة خاطئة
             isAllok = false;
             //عرض النتيجة خطأ في حقل
-            name1.setError("worng langage");
+            lang1.setError("worng langage");
         }
         if (seoson1.length() < 0){
             // تعديل المتغير و يدل على انه فحص و يعطي نتيجة خاطئة
             isAllok = false;
             //عرض النتيجة خطأ في حقل
-            name1.setError("worng Seoson Number");
+            seoson1.setError("worng Seoson Number");
         }
         if (time.length() < 0){
             // تعديل المتغير و يدل على انه فحص و يعطي نتيجة خاطئة
             isAllok = false;
             //عرض النتيجة خطأ في حقل
-            name1.setError("worng Time");
+            time.setError("worng Time");
         }
         if (isAllok) {
             saveMovei_FB(Name,Type,Langage,Seoson,Time);
@@ -99,10 +100,10 @@ public class AddMovie extends AppCompatActivity {
         //بناء الكائن الذي سيتم حفظه
         Movei movei=new Movei();
         movei.setMoveiName(name1);
-        movei.setLangage(lang1);
-        movei.setType(Type1);
-        movei.setSeosonNuumber(seoson1);
-        movei.setTime(time);
+        movei.setMoveiLangage(lang1);
+        movei.setMoveiType(Type1);
+        movei.setMoveiSeosonNuumber(seoson1);
+        movei.setMoveiTime(time);
         movei.setMid(movei.Mid);
         //اضافة كائن لمجموعة المستعملين ومعالج حدث لفحص نجاح الاضافة
         db.collection("MyUsers").document(uid).set(movei).addOnCompleteListener(new OnCompleteListener<Void>() {

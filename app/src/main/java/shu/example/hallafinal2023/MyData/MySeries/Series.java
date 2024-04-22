@@ -10,41 +10,57 @@ public class Series {
     //اسم المسلسل
     public String SeriesName;
     //نوع المسلسل
-    public String Type;
+    public String SeriesType;
     //مدة المسلسل
-    public String Time;
+    public String SeriesTime;
     //لغة امسلسل
-    public String Langage;
+    public String SeriesLangage;
     //رقم الحلقات
-    public String EpisodeNumber;
-    //Gitte+Sitter
+    public String SeriesEpisodeNumber;
+
     public String getSid() {return Sid;}
-    public void setSid(String sid) {Sid = sid;}
 
-    public String getSeriesName() {return SeriesName;}
-    public void setSeriesName(String seriesName) {SeriesName = seriesName;}
+    public void setSid(String sid) {
+        Sid = sid;
+    }
 
-    public String getType() {return Type;}
-    public void setType(String type) {Type = type;}
+    public String getSeriesName() {
+        return SeriesName;
+    }
 
-    public String getTime() {return Time;}
-    public void setTime(String time) {Time = time;}
+    public void setSeriesName(String seriesName) {
+        SeriesName = seriesName;
+    }
 
-    public String getLangage() {return Langage;}
-    public void setLangage(String langage) {Langage = langage;}
+    public String getSeriesType() {
+        return SeriesType;
+    }
 
-    public String getEpisodeNumber() {return EpisodeNumber;}
-    public void setEpisodeNumber(String episodeNumber) {EpisodeNumber = episodeNumber;}
-    //To String
-    @Override
-    public String toString() {
-        return "Series{" +
-                "Sid='" + Sid + '\'' +
-                ", SeriesName='" + SeriesName + '\'' +
-                ", Type='" + Type + '\'' +
-                ", Time='" + Time + '\'' +
-                ", Langage='" + Langage + '\'' +
-                ", EpisodeNumber='" + EpisodeNumber + '\'' +
-                '}';
+    public void setSeriesType(String seriesType) {
+        SeriesType = seriesType;
+    }
+
+    public String getSeriesTime() {
+        return SeriesTime;
+    }
+
+    public void setSeriesTime(String seriesTime) {
+        SeriesTime = seriesTime;
+    }
+
+    public String getSeriesLangage() {
+        return SeriesLangage;
+    }
+
+    public void setSeriesLangage(String seriesLangage) {
+        SeriesLangage = seriesLangage;
+    }
+
+    public String getSeriesEpisodeNumber() {
+        return SeriesEpisodeNumber;
+    }
+
+    public void setSeriesEpisodeNumber(String seriesEpisodeNumber) {
+        SeriesEpisodeNumber = seriesEpisodeNumber;
     }
 }

@@ -42,7 +42,7 @@ public class SingUp extends AppCompatActivity {
     private Uri toUploadimageUri;// כתוב הקובץ(תמונה) שרוצים להעלות
     private Uri downladuri;//כתובת הקוץ בענן אחרי ההעלאה
     private Myuser myTask;//עצם/נתון שרוצים לשמור
-
+    //يتم استدعاء هذه الحالة عند إنشاء النشاط لأول مرة. في هذه الحالة، يجب على النشاط تهيئة واجهة المستخدم الخاصة به وأي مكونات أخرى يحتاجها.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -11,53 +11,42 @@ public class Movei {
     //اسم الفيلم
     public String MoveiName;
     //نوع الفيلم
-    public String Type;
+    public String MoveiType;
     //مدة الفيلم
-    public String Time;
+    public String MoveiTime;
     //لغة الفيلم
-    public String Langage;
+    public String MoveiLangage;
     //رقم الموسم
-    public String SeosonNuumber;
-    //gitter+sitter
-    public String getMid() {
-        return Mid;
-    }
-    public void setMid(String mid) {
-        Mid = mid;
-    }
-
-    public String getMoveiName() {
-        return MoveiName;
-    }
-    public void setMoveiName(String moveiName) {
-        MoveiName = moveiName;
-    }
-
-    public String getType() {
-        return Type;
-    }
-    public void setType(String type) {
-        Type = type;
-    }
-
-    public String getTime() {return Time;}
-    public void setTime(String time) {Time = time;}
-
-    public String getSeosonNuumber() {return SeosonNuumber;}
-    public void setSeosonNuumber(String seosonNuumber) {SeosonNuumber = seosonNuumber;}
-
-    public String getLangage() {return Langage;}
-    public void setLangage(String langage) {Langage = langage;}
-    //to String
+    public String MoveiSeosonNuumber;
+    //Gitter+Sitter
+    //id
+    public String getMid() {return Mid;}
+    public void setMid(String mid) {Mid = mid;}
+    //Name
+    public String getMoveiName() {return MoveiName;}
+    public void setMoveiName(String moveiName) {MoveiName = moveiName;}
+    //Type
+    public String getMoveiType() {return MoveiType;}
+    public void setMoveiType(String moveiType) {MoveiType = moveiType;}
+    //Time
+    public String getMoveiTime() {return MoveiTime;}
+    public void setMoveiTime(String moveiTime) {MoveiTime = moveiTime;}
+    //Langage
+    public String getMoveiLangage() {return MoveiLangage;}
+    public void setMoveiLangage(String moveiLangage) {MoveiLangage = moveiLangage;}
+    //seosonNumber
+    public String getMoveiSeosonNuumber() {return MoveiSeosonNuumber;}
+    public void setMoveiSeosonNuumber(String moveiSeosonNuumber) {MoveiSeosonNuumber = moveiSeosonNuumber;}
+    //To String
     @Override
     public String toString() {
         return "Movei{" +
                 "Mid='" + Mid + '\'' +
                 ", MoveiName='" + MoveiName + '\'' +
-                ", Type='" + Type + '\'' +
-                ", Time=" + Time +
-                ", Langage='" + Langage + '\'' +
-                ", SeosonNuumber=" + SeosonNuumber +
+                ", MoveiType='" + MoveiType + '\'' +
+                ", MoveiTime='" + MoveiTime + '\'' +
+                ", MoveiLangage='" + MoveiLangage + '\'' +
+                ", MoveiSeosonNuumber='" + MoveiSeosonNuumber + '\'' +
                 '}';
     }
 }

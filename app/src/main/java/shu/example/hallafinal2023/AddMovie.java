@@ -7,13 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -24,7 +22,7 @@ public class AddMovie extends AppCompatActivity {
     private TextInputEditText Type1;
     private TextInputEditText lang1;
     private TextInputEditText seoson1;
-    private EditText time;
+    private  TextInputEditText time1;
     private Button btnsave2;
     private Button btncancel2;
     @Override
@@ -36,14 +34,14 @@ public class AddMovie extends AppCompatActivity {
         Type1=findViewById(R.id.Type1);
         lang1=findViewById(R.id.lang1);
         seoson1=findViewById(R.id.seoson1);
-        time=findViewById(R.id.time);
+        time1=findViewById(R.id.time1);
     }
     public void onClickAddmoveiToReating(View v) {
         //to open new activity from current to next activity
         Intent i = new Intent(AddMovie.this, Reating.class);
         startActivity(i);
     }
-
+    //
     private void cheackMoveiDetails(){
         boolean isAllok = true; // يحوي نتيجة فحص الحقول ان كانت  السليمة
         //يستخرج اسم الفيلم
@@ -55,7 +53,7 @@ public class AddMovie extends AppCompatActivity {
         //يستخرج عدد مواسم المسلسل
         String Seoson= seoson1.getText().toString();
         //يستخرج وقت الفيلم
-        String Time= time.getText().toString();
+        String Time= time1.getText().toString();
         if (name1.length() < 0){
             // تعديل المتغير و يدل على انه فحص و يعطي نتيجة خاطئة
             isAllok = false;
@@ -80,11 +78,11 @@ public class AddMovie extends AppCompatActivity {
             //عرض النتيجة خطأ في حقل
             seoson1.setError("worng Seoson Number");
         }
-        if (time.length() < 0){
+        if (time1.length() < 0){
             // تعديل المتغير و يدل على انه فحص و يعطي نتيجة خاطئة
             isAllok = false;
             //عرض النتيجة خطأ في حقل
-            time.setError("worng Time");
+            time1.setError("worng Time");
         }
         if (isAllok) {
             saveMovei_FB(Name,Type,Langage,Seoson,Time);

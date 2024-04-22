@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -16,7 +15,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import shu.example.hallafinal2023.MyData.MyFilmTable.Movei;
 import shu.example.hallafinal2023.MyData.MySeries.Series;
 
 public class AddSeries extends AppCompatActivity {
@@ -24,7 +22,7 @@ public class AddSeries extends AppCompatActivity {
     private TextInputEditText Type2;
     private TextInputEditText lang2;
     private TextInputEditText num2;
-    private EditText time2;
+    private TextInputEditText time2;
     private Button btn;
     private Button btn2;
     @Override
@@ -36,7 +34,7 @@ public class AddSeries extends AppCompatActivity {
             Type2=findViewById(R.id.type2);
             lang2=findViewById(R.id.lang2);
             num2=findViewById(R.id.num2);
-            time2=findViewById(R.id.Time2);
+           time2=findViewById(R.id.time2);
     }
     public void onClickAddmoveiToReating(View v) {
         //to open new activity from current to next activity

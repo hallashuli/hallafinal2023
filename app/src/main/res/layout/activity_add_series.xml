@@ -23,7 +23,8 @@
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/white"
                 android:hint="Name"
-                android:textSize="16sp" />
+                android:textColorHint="@color/black"
+                android:textSize="20sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -37,18 +38,23 @@
                 android:layout_height="70dp"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/white"
-                android:hint="Type" />
+                android:hint="Type"
+                android:textSize="20sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/Time2"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/time2"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_margin="15dp"
-            android:backgroundTint="@color/white"
-            android:ems="10"
-            android:hint="Time"
-            android:inputType="number" />
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:hint="Time"
+                android:textSize="20sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -61,7 +67,8 @@
                 android:layout_height="60dp"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/white"
-                android:hint="langage" />
+                android:hint="langage"
+                android:textSize="20sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -75,7 +82,8 @@
                 android:layout_height="60dp"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/white"
-                android:hint="Episode Number" />
+                android:hint="Episode Number"
+                android:textSize="20sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,6 +94,7 @@
             android:layout_margin="8dp"
             android:backgroundTint="@color/black"
             android:text="Save"
+            android:textSize="24sp"
             app:cornerRadius="30dp" />
 
         <Button
@@ -95,7 +104,9 @@
             android:layout_margin="8dp"
             android:backgroundTint="@color/black"
             android:text="Cancel"
+            android:textSize="24sp"
             app:cornerRadius="30dp" />
+
     </LinearLayout>
 
 </RelativeLayout>

@@ -20,8 +20,8 @@ public class AddSeries extends AppCompatActivity {
     private TextInputEditText lang2;
     private TextInputEditText num2;
     private TextInputEditText time2;
-    private Button btn;
-    private Button btn2;
+    private Button btnsave3;
+    private Button btncancel3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

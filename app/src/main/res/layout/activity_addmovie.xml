@@ -93,7 +93,10 @@
             android:id="@+id/btnsave2"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_margin="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:backgroundTint="@color/black"
             android:onClick="onClickAddmoveiToReating"
             android:text="SAVE"
@@ -101,10 +104,13 @@
             app:cornerRadius="30dp" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btncancel2"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_margin="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:backgroundTint="@color/black"
             android:text="CANCEL"
             android:textSize="24sp"

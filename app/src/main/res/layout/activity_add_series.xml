@@ -88,7 +88,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btn"
+            android:id="@+id/btnsave3"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_margin="8dp"
@@ -98,7 +98,7 @@
             app:cornerRadius="30dp" />
 
         <Button
-            android:id="@+id/btn2"
+            android:id="@+id/btncancel3"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_margin="8dp"

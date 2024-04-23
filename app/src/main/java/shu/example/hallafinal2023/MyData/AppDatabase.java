@@ -8,7 +8,7 @@ import shu.example.hallafinal2023.MyData.myuser.MyUserQuery;
 
 
     /*** تعريف الجداول و رقم النسخة version عند تغيير اي شيء يخص جدول او جداول علينا تغيير رقم الاصدار ليتم بناء قاعدة البيانات من جديد */
-    @Database(entities = {Myuser.class}, version = 1)
+    @Database(entities = {Myuser.class}, version = 2)
     /*** الفئة المسؤلة عن بناء قاعدة بيانات و توفر لناكائن للتعامل مع قاعدة البيانات*/
     public  abstract  class AppDatabase extends RoomDatabase {
         /*** كائن للتعامل مع قاعدة البيانات*/

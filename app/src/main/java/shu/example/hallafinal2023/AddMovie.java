@@ -35,12 +35,15 @@ public class AddMovie extends AppCompatActivity {
         lang1=findViewById(R.id.lang1);
         seoson1=findViewById(R.id.seoson1);
         time1=findViewById(R.id.time1);
+        btnsave2=findViewById(R.id.btnsave2);
+        btnsave2.setOnClickListener(new View.OnClickListener (){
+            @Override
+            public void onClick(View view) {
+               cheackMoveiDetails();
+            }
+        });
     }
-    public void onClickAddmoveiToReating(View v) {
-        //to open new activity from current to next activity
-        Intent i = new Intent(AddMovie.this, Reating.class);
-        startActivity(i);
-    }
+
     //
     private void cheackMoveiDetails(){
         boolean isAllok = true; // يحوي نتيجة فحص الحقول ان كانت  السليمة
@@ -95,6 +98,7 @@ public class AddMovie extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         //استخراج الرقم المميز للمستعمل الذي سجل الدخول
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        db.collection("Mymovies").document().get(Mid)
         //بناء الكائن الذي سيتم حفظه
         Movei movei=new Movei();
         movei.setMoveiName(name1);
@@ -104,7 +108,7 @@ public class AddMovie extends AppCompatActivity {
         movei.setMoveiTime(time);
         movei.setMid(movei.Mid);
         //اضافة كائن لمجموعة المستعملين ومعالج حدث لفحص نجاح الاضافة
-        db.collection("MyUsers").document(uid).set(movei).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Mymovies").document(uid).set(movei).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {

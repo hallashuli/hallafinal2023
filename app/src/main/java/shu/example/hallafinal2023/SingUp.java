@@ -35,7 +35,7 @@ public class SingUp extends AppCompatActivity {
     private TextInputEditText etRepassword;
     private Button btnSave;
     //upload: 1 add Xml image view or button and upload button
-//upload: 2 add next fileds
+    // upload: 2 add next fileds
     private final int IMAGE_PICK_CODE=100;// קוד מזהה לבקשת בחירת תמונה
     private final int PERMISSION_CODE=101;//קוד מזהה לבחירת הרשאת גישה לקבצים
     private ImageButton imgBtnl;//כפתור/ לחצן לבחירת תמונה והצגתה
@@ -67,7 +67,7 @@ public class SingUp extends AppCompatActivity {
     public void onClickSingupToMainactivityChoose(View v) {
         CkeckDetials();
     }
-
+    //فحص معطيات المستخدم
     private void CkeckDetials() {
         boolean isAllok = true; // يحوي نتيجة فحص الحقول ان كانت  السليمة
         String email = etEmail.getText().toString();
@@ -201,6 +201,7 @@ public class SingUp extends AppCompatActivity {
             });
         }
     }
+    //فظ معطيات المستخدم في الFirebase
     private void saveUser_FB(String email, String name, String phone, String password) {
         //مؤشر لقاعدة البيانات
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -294,13 +295,11 @@ public class SingUp extends AppCompatActivity {
 
     }
 
-
-
-
     public void onClickSingupToSinginFireBace (View v){
         checkAndSignUP_FB();
     }
     public void onClickCancelADDFireBace (View v){
+
         finish();
     }
 }

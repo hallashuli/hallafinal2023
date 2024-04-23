@@ -11,7 +11,6 @@ import java.util.List;
 /**
  * الواجهة تحتوي استعلامات على قاعدة البيانات
  */
-
 @Dao
 public interface MyUserQuery {
     @Query("SELECT * FROM Myuser")
@@ -35,10 +34,10 @@ public interface MyUserQuery {
 
     @Query("Delete From Myuser WHERE keyid=:id ")
     void delete(int id);
-
+//اضافة
     @Insert
     void insert(Myuser myUser);
-
+//تعديل
     @Update
     void update(Myuser... values);
 }

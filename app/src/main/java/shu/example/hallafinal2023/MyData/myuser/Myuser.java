@@ -15,7 +15,7 @@ public class Myuser {
     public String email; // في حال لم يتم اعطاء اسم جديد للعامود يكون اسم الصفة هو اسم العامود
     public String phone;
     public String passw;
-
+    //To String
     @Override
     public String toString() {
         return "Myuser{" +
@@ -27,45 +27,40 @@ public class Myuser {
                 ", id='" + id + '\'' +
                 '}';
     }
-
+    //Gitter+Sitter
+    //id
     public String id;
-
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
-
+    //name
     public String getFullName() {
         return fullName;
     }
-
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
-
+    //phone
     public String getPhone() {
         return phone;
     }
-
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
+    //password
     public String getPassw() {
         return passw;
     }
-
     public void setPassw(String passw) {
         this.passw = passw;
     }
-
+    //Email
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }

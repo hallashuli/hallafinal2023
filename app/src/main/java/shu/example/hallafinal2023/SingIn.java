@@ -42,7 +42,7 @@ public class SingIn extends AppCompatActivity {
     public void onClickSinginToMainActivitychoose(View v) {
         ckeckEmailPassw();
     }
-
+    //فحص الايميل و الباسوورد
     private void ckeckEmailPassw() {
         boolean isAllok = true; // يحوي نتيجة فحص الحقول ان كانت  السليمة
         //استخراج نص البريد الالكتروني
@@ -76,7 +76,6 @@ public class SingIn extends AppCompatActivity {
                 startActivity(i);
                 finish();
             }
-
             //FireBase
             if (isAllok) {
                 //كائن لعملية تسجيل

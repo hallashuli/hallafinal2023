@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 public class Movei {
     @PrimaryKey(autoGenerate = true) //والذي ينتج بشكل تلقائي تحديد الصفة كمفتاح رئيسي
     //رقم الفيلم
-    public String Mid;
+    public String mid;
     //اسم الفيلم
     public String MoveiName;
     //نوع الفيلم
@@ -20,8 +20,8 @@ public class Movei {
     public String MoveiSeosonNuumber;
     //Gitter+Sitter
     //id
-    public String getMid() {return Mid;}
-    public void setMid(String mid) {Mid = mid;}
+    public String getmid() {return mid;}
+    public void setMid(String mid) {mid = mid;}
     //Name
     public String getMoveiName() {return MoveiName;}
     public void setMoveiName(String moveiName) {MoveiName = moveiName;}
@@ -41,7 +41,7 @@ public class Movei {
     @Override
     public String toString() {
         return "Movei{" +
-                "Mid='" + Mid + '\'' +
+                "Mid='" + mid + '\'' +
                 ", MoveiName='" + MoveiName + '\'' +
                 ", MoveiType='" + MoveiType + '\'' +
                 ", MoveiTime='" + MoveiTime + '\'' +

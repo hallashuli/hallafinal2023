@@ -98,7 +98,7 @@ public class AddMovie extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         //استخراج الرقم المميز للمستعمل الذي سجل الدخول
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        db.collection("Mymovies").document().get(Mid)
+        String mid = db.collection("Mymovies").document().getId();
         //بناء الكائن الذي سيتم حفظه
         Movei movei=new Movei();
         movei.setMoveiName(name1);
@@ -106,9 +106,9 @@ public class AddMovie extends AppCompatActivity {
         movei.setMoveiType(Type1);
         movei.setMoveiSeosonNuumber(seoson1);
         movei.setMoveiTime(time);
-        movei.setMid(movei.Mid);
+        movei.setMid(mid);
         //اضافة كائن لمجموعة المستعملين ومعالج حدث لفحص نجاح الاضافة
-        db.collection("Mymovies").document(uid).set(movei).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Mymovies").document(mid).set(movei).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {

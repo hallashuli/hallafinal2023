@@ -9,44 +9,44 @@ public class Movei {
     //رقم الفيلم
     public String mid;
     //اسم الفيلم
-    public String MoveiName;
+    public String moveiName;
     //نوع الفيلم
-    public String MoveiType;
+    public String moveiType;
     //مدة الفيلم
-    public String MoveiTime;
+    public String moveiTime;
     //لغة الفيلم
-    public String MoveiLangage;
+    public String moveiLangage;
     //رقم الموسم
-    public String MoveiSeosonNuumber;
+    public String moveiSeosonNuumber;
     //Gitter+Sitter
     //id
-    public String getmid() {return mid;}
-    public void setMid(String mid) {mid = mid;}
-    //Name
-    public String getMoveiName() {return MoveiName;}
-    public void setMoveiName(String moveiName) {MoveiName = moveiName;}
-    //Type
-    public String getMoveiType() {return MoveiType;}
-    public void setMoveiType(String moveiType) {MoveiType = moveiType;}
-    //Time
-    public String getMoveiTime() {return MoveiTime;}
-    public void setMoveiTime(String moveiTime) {MoveiTime = moveiTime;}
-    //Langage
-    public String getMoveiLangage() {return MoveiLangage;}
-    public void setMoveiLangage(String moveiLangage) {MoveiLangage = moveiLangage;}
-    //seosonNumber
-    public String getMoveiSeosonNuumber() {return MoveiSeosonNuumber;}
-    public void setMoveiSeosonNuumber(String moveiSeosonNuumber) {MoveiSeosonNuumber = moveiSeosonNuumber;}
-    //To String
+    public String getMid() {return mid;}
+    public void setMid(String mid) {this.mid = mid;}
+    //name
+    public String getMoveiName() {return moveiName;}
+    public void setMoveiName(String moveiName) {this.moveiName = moveiName;}
+    //type
+    public String getMoveiType() {return moveiType;}
+    public void setMoveiType(String moveiType) {this.moveiType = moveiType;}
+    //time
+    public String getMoveiTime() {return moveiTime;}
+    public void setMoveiTime(String moveiTime) {this.moveiTime = moveiTime;}
+    //langage
+    public String getMoveiLangage() {return moveiLangage;}
+    public void setMoveiLangage(String moveiLangage) {this.moveiLangage = moveiLangage;}
+    //seoson number
+    public String getMoveiSeosonNuumber() {return moveiSeosonNuumber;}
+    public void setMoveiSeosonNuumber(String moveiSeosonNuumber) {this.moveiSeosonNuumber = moveiSeosonNuumber;}
+    //to string
     @Override
     public String toString() {
         return "Movei{" +
-                "Mid='" + mid + '\'' +
-                ", MoveiName='" + MoveiName + '\'' +
-                ", MoveiType='" + MoveiType + '\'' +
-                ", MoveiTime='" + MoveiTime + '\'' +
-                ", MoveiLangage='" + MoveiLangage + '\'' +
-                ", MoveiSeosonNuumber='" + MoveiSeosonNuumber + '\'' +
+                "mid='" + mid + '\'' +
+                ", moveiName='" + moveiName + '\'' +
+                ", moveiType='" + moveiType + '\'' +
+                ", moveiTime='" + moveiTime + '\'' +
+                ", moveiLangage='" + moveiLangage + '\'' +
+                ", moveiSeosonNuumber='" + moveiSeosonNuumber + '\'' +
                 '}';
     }
 }

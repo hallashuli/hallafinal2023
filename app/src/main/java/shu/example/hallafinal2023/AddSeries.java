@@ -1,7 +1,6 @@
 package shu.example.hallafinal2023;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -26,18 +25,21 @@ public class AddSeries extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_series);
-            //توقيت الصفات
+            //توثيق الصفات
             name2=findViewById(R.id.name2);
             type2=findViewById(R.id.type2);
             lang2=findViewById(R.id.lang2);
             num2=findViewById(R.id.num2);
            time2=findViewById(R.id.time2);
+        btnsave3=findViewById(R.id.btnsave3);
+        btnsave3.setOnClickListener(new View.OnClickListener (){
+            @Override
+            public void onClick(View view) {
+                cheackSeriesDetails();
+            }
+        });
     }
-    public void onClickAddmoveiToReating(View v) {
-        //to open new activity from current to next activity
-        Intent i = new Intent(AddSeries.this, Reating.class);
-        startActivity(i);
-    }
+
     private void cheackSeriesDetails() {
         boolean isAllok = true; // يحوي نتيجة فحص الحقول ان كانت  السليمة
         //يستخرج اسم المسلسل
@@ -89,8 +91,7 @@ public class AddSeries extends AppCompatActivity {
         {
             //مؤشر لقاعدة البيانات
             FirebaseFirestore db = FirebaseFirestore.getInstance();
-            //استخراج الرقم المميز للمستعمل الذي سجل الدخول
-            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            String sid = db.collection("Myseries").document().getId();
             //بناء الكائن الذي سيتم حفظه
             Series series=new Series();
             series.setSeriesName(name2);
@@ -98,15 +99,16 @@ public class AddSeries extends AppCompatActivity {
             series.setSeriesType(type2);
             series.setSeriesEpisodeNumber(num2);
             series.setSeriesTime(time2);
+            series.setSid(sid);
             //اضافة كائن لمجموعة المستعملين ومعالج حدث لفحص نجاح الاضافة
-            db.collection("MyUsers").document(uid).set(series).addOnCompleteListener(new OnCompleteListener<Void>() {
+            db.collection("MySeries").document(sid).set(series).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
-                        Toast.makeText(AddSeries.this, "Succeed to add Movei", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddSeries.this, "Succeed to add Series", Toast.LENGTH_SHORT).show();
                         finish();
                     } else {
-                        Toast.makeText(AddSeries.this, "Failed to add Movei", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddSeries.this, "Failed to add Series", Toast.LENGTH_SHORT).show();
                     }
                 }
             });

@@ -1,20 +1,16 @@
 package shu.example.hallafinal2023;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import shu.example.hallafinal2023.MyData.MyFilmTable.Movei;
 
 public class AddMovie extends AppCompatActivity {
@@ -29,7 +25,7 @@ public class AddMovie extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addmovie);
-        //توقيت الصفات
+        //توثيق الصفات
         name1=findViewById(R.id.name1);
         Type1=findViewById(R.id.Type1);
         lang1=findViewById(R.id.lang1);
@@ -43,7 +39,6 @@ public class AddMovie extends AppCompatActivity {
             }
         });
     }
-
     //دالة تفحص معطيات الفيلم
     private void cheackMoveiDetails(){
         boolean isAllok = true; // يحوي نتيجة فحص الحقول ان كانت  السليمة
@@ -96,8 +91,6 @@ public class AddMovie extends AppCompatActivity {
     {
         //مؤشر لقاعدة البيانات
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        //استخراج الرقم المميز للمستعمل الذي سجل الدخول
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String mid = db.collection("Mymovies").document().getId();
         //بناء الكائن الذي سيتم حفظه
         Movei movei=new Movei();

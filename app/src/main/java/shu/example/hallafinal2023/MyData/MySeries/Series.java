@@ -6,66 +6,47 @@ import androidx.room.PrimaryKey;
 public class Series {
     @PrimaryKey(autoGenerate = true) //الذي ينتج بشكل تلقائي تحديد الصفة كمفتاح رئيسي
     //رقم الفيلم
-    public String Sid;
+    public String sid;
     //اسم المسلسل
-    public String SeriesName;
+    public String seriesName;
     //نوع المسلسل
-    public String SeriesType;
+    public String seriesType;
     //مدة المسلسل
-    public String SeriesTime;
+    public String seriesTime;
     //لغة امسلسل
-    public String SeriesLangage;
+    public String seriesLangage;
     //رقم الحلقات
-    public String SeriesEpisodeNumber;
-    //gitter+sitter
+    public String seriesEpisodeNumber;
+    //Gitter+Sitter
     //id
-    public String getSid() {return Sid;}
-    public void setSid(String sid) {
-        Sid = sid;
-    }
+    public String getSid() {return sid;}
+    public void setSid(String sid) {this.sid = sid;}
     //name
-    public String getSeriesName() {
-        return SeriesName;
-    }
-    public void setSeriesName(String seriesName) {
-        SeriesName = seriesName;
-    }
-    //Type
-    public String getSeriesType() {
-        return SeriesType;
-    }
-    public void setSeriesType(String seriesType) {
-        SeriesType = seriesType;
-    }
-    //Time
-    public String getSeriesTime() {
-        return SeriesTime;
-    }
-    public void setSeriesTime(String seriesTime) {
-        SeriesTime = seriesTime;
-    }
-    //Langage
-    public String getSeriesLangage() {
-        return SeriesLangage;
-    }
-    public void setSeriesLangage(String seriesLangage) {
-        SeriesLangage = seriesLangage;
-    }
-    //EpisodeNumber
-    public String getSeriesEpisodeNumber() {
-        return SeriesEpisodeNumber;
-    }
-    public void setSeriesEpisodeNumber(String seriesEpisodeNumber) {SeriesEpisodeNumber = seriesEpisodeNumber;}
-    //ToString
+    public String getSeriesName() {return seriesName;}
+    public void setSeriesName(String seriesName) {this.seriesName = seriesName;}
+    //type
+    public String getSeriesType() {return seriesType;}
+    public void setSeriesType(String seriesType) {this.seriesType = seriesType;}
+    //type
+    public String getSeriesTime() {return seriesTime;}
+    public void setSeriesTime(String seriesTime) {this.seriesTime = seriesTime;}
+    //langage
+    public String getSeriesLangage() {return seriesLangage;}
+    public void setSeriesLangage(String seriesLangage) {this.seriesLangage = seriesLangage;}
+    //episodeNumber
+    public String getSeriesEpisodeNumber() {return seriesEpisodeNumber;}
+    public void setSeriesEpisodeNumber(String seriesEpisodeNumber) {this.seriesEpisodeNumber = seriesEpisodeNumber;}
+    //to String
+
     @Override
     public String toString() {
         return "Series{" +
-                "Sid='" + Sid + '\'' +
-                ", SeriesName='" + SeriesName + '\'' +
-                ", SeriesType='" + SeriesType + '\'' +
-                ", SeriesTime='" + SeriesTime + '\'' +
-                ", SeriesLangage='" + SeriesLangage + '\'' +
-                ", SeriesEpisodeNumber='" + SeriesEpisodeNumber + '\'' +
+                "sid='" + sid + '\'' +
+                ", seriesName='" + seriesName + '\'' +
+                ", seriesType='" + seriesType + '\'' +
+                ", seriesTime='" + seriesTime + '\'' +
+                ", seriesLangage='" + seriesLangage + '\'' +
+                ", seriesEpisodeNumber='" + seriesEpisodeNumber + '\'' +
                 '}';
     }
 }

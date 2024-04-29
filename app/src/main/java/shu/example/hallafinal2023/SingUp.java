@@ -63,7 +63,6 @@ public class SingUp extends AppCompatActivity {
             }
         });
     }
-
     public void onClickSingupToMainactivityChoose(View v) {
         CkeckDetials();
     }

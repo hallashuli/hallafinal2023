@@ -44,7 +44,7 @@ public class AddMovie extends AppCompatActivity {
         });
     }
 
-    //
+    //دالة تفحص معطيات الفيلم
     private void cheackMoveiDetails(){
         boolean isAllok = true; // يحوي نتيجة فحص الحقول ان كانت  السليمة
         //يستخرج اسم الفيلم
@@ -107,7 +107,7 @@ public class AddMovie extends AppCompatActivity {
         movei.setMoveiSeosonNuumber(seoson1);
         movei.setMoveiTime(time);
         movei.setMid(mid);
-        //اضافة كائن لمجموعة المستعملين ومعالج حدث لفحص نجاح الاضافة
+        //اضافة كائن لمجموعة الافلام ومعالج حدث لفحص نجاح الاضافة
         db.collection("Mymovies").document(mid).set(movei).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

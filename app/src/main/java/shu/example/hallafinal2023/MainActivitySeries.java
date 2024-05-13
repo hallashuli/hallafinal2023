@@ -27,7 +27,7 @@ public class MainActivitySeries extends AppCompatActivity {
         faBaDd.setOnClickListener(new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivitySeries.this, AddMovie.class);
+                Intent i = new Intent(MainActivitySeries.this, AddSeries.class);
                 startActivity(i);
                 finish();
             }

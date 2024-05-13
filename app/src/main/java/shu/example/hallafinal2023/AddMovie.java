@@ -113,6 +113,4 @@ public class AddMovie extends AppCompatActivity {
             }
         });
     }
-
-
 }

@@ -19,18 +19,14 @@ public class MainActivitychoose extends AppCompatActivity {
         bM = findViewById(R.id.bM);
         bS = findViewById(R.id.bS);
     }
+    //عند اختيار الخيار Movei تنفتح الشاشة الريئسة للفيلم والتي يوجد بها الافلام التي موجودة في التطبيق
         public void onClickChoosetoMovei(View v) {
             Intent i=new Intent(MainActivitychoose.this, MainActivityMovie.class);
             startActivity(i);
         }
+        //عند اختيار الخيار Series تنفتح الشاشة الريئسة للمسلسل والتي يوجد بها المسلسلات  التي موجودة في التطبيق
         public void onClickChoosetoSeries(View v) {
              Intent i=new Intent(MainActivitychoose.this, MainActivitySeries.class);
              startActivity(i);
     }
-
-
 }
-
-
-
-

@@ -84,6 +84,7 @@ public class AddMovie extends AppCompatActivity {
         }
         if (isAllok) {
             saveMovei_FB(Name,Type,Langage,Seoson,Time);
+
         }
     }
     //Firebase

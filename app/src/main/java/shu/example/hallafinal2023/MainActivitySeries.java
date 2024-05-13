@@ -21,7 +21,6 @@ public class MainActivitySeries extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_series);
-        spnrS=findViewById(R.id.spnrS);
         istvS=findViewById(R.id.istvS);
         faBaDd=findViewById(R.id.faBaDd);
         faBaDd.setOnClickListener(new View.OnClickListener () {

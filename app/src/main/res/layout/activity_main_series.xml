@@ -29,13 +29,6 @@
 
         </SearchView>
 
-        <Spinner
-            android:id="@+id/spnrS"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"
-            android:layout_weight="0" />
-
         <ListView
             android:id="@+id/istvS"
             android:layout_width="match_parent"

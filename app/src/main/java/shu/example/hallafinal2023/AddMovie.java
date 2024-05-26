@@ -125,7 +125,8 @@ public class AddMovie extends AppCompatActivity {
             //
             isAllok=false;
             //
-            moveiphoto.setError("no photo");
+            Toast.makeText(this, "must choose image", Toast.LENGTH_SHORT).show();
+
         }
         if (isAllok) {
             saveMovei_FB(Name,Type,Langage,Seoson,Time);

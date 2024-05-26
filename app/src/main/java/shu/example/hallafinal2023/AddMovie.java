@@ -2,15 +2,28 @@ package shu.example.hallafinal2023;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.OnProgressListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.util.UUID;
+
 import shu.example.hallafinal2023.MyData.MyFilmTable.Movei;
 
 public class AddMovie extends AppCompatActivity {
@@ -21,6 +34,14 @@ public class AddMovie extends AppCompatActivity {
     private  TextInputEditText time1;
     private Button btnsave2;
     private Button btncancel2;
+    //upload: 1 add Xml image view or button and upload button
+//upload: 2 add next fileds
+    private final int IMAGE_PICK_CODE=100;// קוד מזהה לבקשת בחירת תמונה
+    private final int PERMISSION_CODE=101;//קוד מזהה לבחירת הרשאת גישה לקבצים
+    private ImageView moveiphoto;//כפתור/ לחצן לבחירת תמונה והצגתה
+    private Uri toUploadimageUri;// כתוב הקובץ(תמונה) שרוצים להעלות
+    private Uri downladuri;//כתובת הקוץ בענן אחרי ההעלאה
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +53,27 @@ public class AddMovie extends AppCompatActivity {
         seoson1=findViewById(R.id.seoson1);
         time1=findViewById(R.id.time1);
         btnsave2=findViewById(R.id.btnsave2);
+        //upload: 3
+        moveiphoto=findViewById(R.id.moveiphoto);
+        moveiphoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+
         btnsave2.setOnClickListener(new View.OnClickListener (){
             @Override
             public void onClick(View view) {
                cheackMoveiDetails();
+            }
+        });
+        //upload: 3
+        moveiphoto=findViewById(R.id.moveiphoto);
+        moveiphoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //upload: 8
+                checkPermission();
             }
         });
     }
@@ -82,6 +120,13 @@ public class AddMovie extends AppCompatActivity {
             //عرض النتيجة خطأ في حقل
             time1.setError("worng Time");
         }
+        if (toUploadimageUri!=null)
+        {
+            //
+            isAllok=false;
+            //
+            moveiphoto.setError("no photo");
+        }
         if (isAllok) {
             saveMovei_FB(Name,Type,Langage,Seoson,Time);
 
@@ -114,4 +159,127 @@ public class AddMovie extends AppCompatActivity {
             }
         });
     }
+    private void pickImageFromGallery(){
+        //implicit intent (מרומז) to pick image
+        Intent intent=new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent,IMAGE_PICK_CODE);//הפעלתה האינטנט עם קוד הבקשה
+    }
+    //upload: 5:handle result of picked images
+    /**
+     *
+     * @param requestCode מספר הקשה
+     * @param resultCode תוצאה הבקשה (אם נבחר משהו או בוטלה)
+     * @param data הנתונים שנבחרו
+     */
+    @Override
+    protected void onActivityResult(int requestCode,int resultCode,Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        //אם נבחר משהו ואם זה קוד בקשת התמונה
+        if (resultCode==RESULT_OK && requestCode== IMAGE_PICK_CODE){
+            //a עידכון תכונת כתובת התמונה
+            toUploadimageUri = data.getData();//קבלת כתובת התמונה הנתונים שניבחרו
+            moveiphoto.setImageURI(toUploadimageUri);// הצגת התמונה שנבחרה על רכיב התמונה
+        }
+    }
+    //upload: 6
+    /**
+     * בדיקה האם יש הרשאה לגישה לקבצים בטלפון
+     */
+    private void checkPermission()
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {//בדיקת גרסאות
+            //בדיקה אם ההשאה לא אושרה בעבר
+            if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                //רשימת ההרשאות שרוצים לבקש אישור
+                String[] permissions = {android.Manifest.permission.READ_EXTERNAL_STORAGE};
+                //בקשת אישור ההשאות (שולחים קוד הבקשה)
+                //התשובה תתקבל בפעולה onRequestPermissionsResult
+                requestPermissions(permissions, PERMISSION_CODE);
+            } else {
+                //permission already granted אם יש הרשאה מקודם אז מפעילים בחירת תמונה מהטלפון
+                pickImageFromGallery();
+            }
+        }
+        else {//אם גרסה ישנה ולא צריך קבלת אישור
+            pickImageFromGallery();
+        }
+    }
+    //upload: 7
+    /**
+     * @param requestCode The request code passed in מספר בקשת ההרשאה
+     * @param permissions The requested permissions. Never null. רשימת ההרשאות לאישור
+     * @param grantResults The grant results for the corresponding permissions תוצאה עבור כל הרשאה
+     *   PERMISSION_GRANTED אושר or PERMISSION_DENIED נדחה . Never null.
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode==PERMISSION_CODE) {//בדיקת קוד בקשת ההרשאה
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //permission was granted אם יש אישור
+                pickImageFromGallery();
+            } else {
+                //permission was denied אם אין אישור
+                Toast.makeText(this, "Permission denied...!", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+    private void uploadImage(Uri filePath) {
+        if (filePath != null) {
+            //יצירת דיאלוג התקדמות
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();//הצגת הדיאלוג
+            //קבלת כתובת האחסון בענן
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            StorageReference storageReference = storage.getReference();
+            //יצירת תיקיה ושם גלובלי לקובץ
+            final StorageReference ref = storageReference.child("images/" + UUID.randomUUID().toString());
+            // יצירת ״תהליך מקביל״ להעלאת תמונה
+            ref.putFile(filePath)
+                    //הוספת מאזין למצב ההעלאה
+                    .addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                progressDialog.dismiss();// הסתרת הדיאלוג
+                                //קבלת כתובת הקובץ שהועלה
+                                ref.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Uri> task) {
+                                        downladuri = task.getResult();
+                                        Toast.makeText(getApplicationContext(), "Uploaded", Toast.LENGTH_SHORT).show();
+                                        a.setImage(downladuri.toString());//עדכון כתובת התמונה שהועלתה
+                                        saveSubjAndTask();
+                                    }
+                                });
+                            } else {
+                                progressDialog.dismiss();//הסתרת הדיאלוג
+                                Toast.makeText(getApplicationContext(), "Failed " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    })
+                    //הוספת מאזין שמציג מהו אחוז ההעלאה
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            //חישוב מה הגודל שהועלה
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred()/ taskSnapshot
+                                    .getTotalByteCount());
+                            progressDialog.setMessage("Uploaded " + (int) progress + "%");
+                        }
+                    });
+        } else {
+            saveSubjAndTask();
+        }
+    }
+
+
+
+
+
+
+
+
 }

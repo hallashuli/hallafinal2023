@@ -5,6 +5,10 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     tools:context=".AddSeries">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,12 +18,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp">
+            android:layout_margin="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/name2"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/white"
                 android:hint="Name"
@@ -30,12 +34,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp">
+            android:layout_margin="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/type2"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/white"
                 android:hint="Type"
@@ -45,12 +49,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp">
+            android:layout_margin="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/time2"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:hint="Time"
                 android:textSize="20sp" />
@@ -59,12 +63,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp">
+            android:layout_margin="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/lang2"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/white"
                 android:hint="langage"
@@ -74,18 +78,25 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp">
+            android:layout_margin="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/num2"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/white"
                 android:hint="Episode Number"
                 android:textSize="20sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/ic_launcher_foreground" />
 
         <Button
             android:id="@+id/btnsave3"
@@ -108,5 +119,5 @@
             app:cornerRadius="30dp" />
 
     </LinearLayout>
-
+    </ScrollView>
 </RelativeLayout>

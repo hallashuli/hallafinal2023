@@ -298,55 +298,55 @@ public class SingUp extends AppCompatActivity {
         }
 
     }
-    private void uploadImage(Uri filePath) {
-        if (filePath != null) {
-            //יצירת דיאלוג התקדמות
-            final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Uploading...");
-            progressDialog.show();//הצגת הדיאלוג
-            //קבלת כתובת האחסון בענן
-            FirebaseStorage storage = FirebaseStorage.getInstance();
-            StorageReference storageReference = storage.getReference();
-            //יצירת תיקיה ושם גלובלי לקובץ
-            final StorageReference ref = storageReference.child("images/" + UUID.randomUUID().toString());
-            // יצירת ״תהליך מקביל״ להעלאת תמונה
-            ref.putFile(filePath)
-                    //הוספת מאזין למצב ההעלאה
-                    .addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                            if (task.isSuccessful()) {
-                                progressDialog.dismiss();// הסתרת הדיאלוג
-                                //קבלת כתובת הקובץ שהועלה
-                                ref.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Uri> task) {
-                                        downladuri = task.getResult();
-                                        Toast.makeText(getApplicationContext(), "Uploaded", Toast.LENGTH_SHORT).show();
-                                        myTask.setImage(downladuri.toString());//עדכון כתובת התמונה שהועלתה
-                                        saveSubjAndTask();
-                                    }
-                                });
-                            } else {
-                                progressDialog.dismiss();//הסתרת הדיאלוג
-                                Toast.makeText(getApplicationContext(), "Failed " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    })
-                    //הוספת מאזין שמציג מהו אחוז ההעלאה
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            //חישוב מה הגודל שהועלה
-                            double progress = (100.0 * taskSnapshot.getBytesTransferred()/ taskSnapshot
-                                    .getTotalByteCount());
-                            progressDialog.setMessage("Uploaded " + (int) progress + "%");
-                        }
-                    });
-        } else {
-            saveSubjAndTask();
-        }
-    }
+//    private void uploadImage(Uri filePath) {
+//        if (filePath != null) {
+//            //יצירת דיאלוג התקדמות
+//            final ProgressDialog progressDialog = new ProgressDialog(this);
+//            progressDialog.setTitle("Uploading...");
+//            progressDialog.show();//הצגת הדיאלוג
+//            //קבלת כתובת האחסון בענן
+//            FirebaseStorage storage = FirebaseStorage.getInstance();
+//            StorageReference storageReference = storage.getReference();
+//            //יצירת תיקיה ושם גלובלי לקובץ
+//            final StorageReference ref = storageReference.child("images/" + UUID.randomUUID().toString());
+//            // יצירת ״תהליך מקביל״ להעלאת תמונה
+//            ref.putFile(filePath)
+//                    //הוספת מאזין למצב ההעלאה
+//                    .addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+//                            if (task.isSuccessful()) {
+//                                progressDialog.dismiss();// הסתרת הדיאלוג
+//                                //קבלת כתובת הקובץ שהועלה
+//                                ref.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+//                                    @Override
+//                                    public void onComplete(@NonNull Task<Uri> task) {
+//                                        downladuri = task.getResult();
+//                                        Toast.makeText(getApplicationContext(), "Uploaded", Toast.LENGTH_SHORT).show();
+//                                        myTask.set(downladuri.toString());//עדכון כתובת התמונה שהועלתה
+//                                        saveSubjAndTask();
+//                                    }
+//                                });
+//                            } else {
+//                                progressDialog.dismiss();//הסתרת הדיאלוג
+//                                Toast.makeText(getApplicationContext(), "Failed " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//                    })
+//                    //הוספת מאזין שמציג מהו אחוז ההעלאה
+//                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+//                        @Override
+//                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+//                            //חישוב מה הגודל שהועלה
+//                            double progress = (100.0 * taskSnapshot.getBytesTransferred()/ taskSnapshot
+//                                    .getTotalByteCount());
+//                            progressDialog.setMessage("Uploaded " + (int) progress + "%");
+//                        }
+//                    });
+//        } else {
+//            saveSubjAndTask();
+//        }
+//    }
 
 
     public void onClickSingupToSinginFireBace (View v){

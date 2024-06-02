@@ -1,10 +1,14 @@
 package shu.example.hallafinal2023;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,6 +25,16 @@ public class AddSeries extends AppCompatActivity {
     private TextInputEditText time2;
     private Button btnsave3;
     private Button btncancel3;
+    private ImageView seriesphoto;
+    //upload: 1 add Xml image view or button and upload button
+//upload: 2 add next fileds
+    private final int IMAGE_PICK_CODE=100;// קוד מזהה לבקשת בחירת תמונה
+    private final int PERMISSION_CODE=101;//קוד מזהה לבחירת הרשאת גישה לקבצים
+    private ImageView moveiphoto;//כפתור/ לחצן לבחירת תמונה והצגתה
+    private Uri toUploadimageUri;// כתוב הקובץ(תמונה) שרוצים להעלות
+    private Uri downladuri;//כתובת הקוץ בענן אחרי ההעלאה
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,14 +46,32 @@ public class AddSeries extends AppCompatActivity {
             num2=findViewById(R.id.num2);
            time2=findViewById(R.id.time2);
         btnsave3=findViewById(R.id.btnsave3);
+
+        //upload: 3
+        seriesphoto=findViewById(R.id.seriesphoto);
+        seriesphoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+
         btnsave3.setOnClickListener(new View.OnClickListener (){
             @Override
             public void onClick(View view) {
                 cheackSeriesDetails();
             }
         });
+        //upload: 3
+        //seriesphoto=findViewById(R.id.seriesphoto);
+        seriesphoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //upload: 8
+                //checkPermission();
+            }
+        });
     }
-
+//دالة تفحص معطيات المسلسل
     private void cheackSeriesDetails() {
         boolean isAllok = true; // يحوي نتيجة فحص الحقول ان كانت  السليمة
         //يستخرج اسم المسلسل
@@ -82,6 +114,14 @@ public class AddSeries extends AppCompatActivity {
             isAllok = false;
             //عرض النتيجة خطأ في حقل
             time2.setError("worng Time");
+        }
+        if (toUploadimageUri!=null)
+        {
+            //
+            isAllok=false;
+            //
+            Toast.makeText(this, "must choose image", Toast.LENGTH_SHORT).show();
+
         }
         if (isAllok) {saveSeries_FB(Name, Type, Langage, EpisodeNumber, Time);
         }

@@ -8,6 +8,8 @@ public class Movei {
     @PrimaryKey(autoGenerate = true) //والذي ينتج بشكل تلقائي تحديد الصفة كمفتاح رئيسي
     //رقم الفيلم
     public String mid;
+    //صفة اضافة الفيلم
+    public String mUid;
     //اسم الفيلم
     public String moveiName;
     //نوع الفيلم
@@ -18,6 +20,8 @@ public class Movei {
     public String moveiLangage;
     //رقم الموسم
     public String moveiSeosonNuumber;
+    //
+    public String image;
     //Gitter+Sitter
     //id
     public String getMid() {return mid;}
@@ -37,11 +41,23 @@ public class Movei {
     //seoson number
     public String getMoveiSeosonNuumber() {return moveiSeosonNuumber;}
     public void setMoveiSeosonNuumber(String moveiSeosonNuumber) {this.moveiSeosonNuumber = moveiSeosonNuumber;}
-    //to string
+    // mUid
+    public String getmUid() {return mUid;}
+    public void setmUid(String mUid){this.mUid = mUid;}
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     @Override
     public String toString() {
         return "Movei{" +
                 "mid='" + mid + '\'' +
+                ", mUid='" + mUid + '\'' +
                 ", moveiName='" + moveiName + '\'' +
                 ", moveiType='" + moveiType + '\'' +
                 ", moveiTime='" + moveiTime + '\'' +

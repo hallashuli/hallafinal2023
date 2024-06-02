@@ -17,8 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.OnProgressListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -41,6 +41,7 @@ public class AddMovie extends AppCompatActivity {
     private ImageView moveiphoto;//כפתור/ לחצן לבחירת תמונה והצגתה
     private Uri toUploadimageUri;// כתוב הקובץ(תמונה) שרוצים להעלות
     private Uri downladuri;//כתובת הקוץ בענן אחרי ההעלאה
+    Movei movei=new Movei();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,23 +130,24 @@ public class AddMovie extends AppCompatActivity {
 
         }
         if (isAllok) {
-            saveMovei_FB(Name,Type,Langage,Seoson,Time);
+            movei.setMoveiName(Name);
+            movei.setMoveiLangage(Langage);
+            movei.setMoveiType(Type);
+            movei.setMoveiSeosonNuumber(Seoson);
+            movei.setMoveiTime(Time);
+            uploadImage(toUploadimageUri);
+
 
         }
     }
     //Firebase
-    private void saveMovei_FB(String name1, String Type1, String lang1, String seoson1,String time )
+    private void saveMovei_FB()
     {
         //مؤشر لقاعدة البيانات
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         String mid = db.collection("Mymovies").document().getId();
         //بناء الكائن الذي سيتم حفظه
-        Movei movei=new Movei();
-        movei.setMoveiName(name1);
-        movei.setMoveiLangage(lang1);
-        movei.setMoveiType(Type1);
-        movei.setMoveiSeosonNuumber(seoson1);
-        movei.setMoveiTime(time);
+
         movei.setMid(mid);
         //اضافة كائن لمجموعة الافلام ومعالج حدث لفحص نجاح الاضافة
         db.collection("Mymovies").document(mid).set(movei).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -251,8 +253,8 @@ public class AddMovie extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Uri> task) {
                                         downladuri = task.getResult();
                                         Toast.makeText(getApplicationContext(), "Uploaded", Toast.LENGTH_SHORT).show();
-                                        a.setImage(downladuri.toString());//עדכון כתובת התמונה שהועלתה
-                                        saveSubjAndTask();
+                                        movei.setImage(downladuri.toString());//עדכון כתובת התמונה שהועלתה
+                                        saveMovei_FB();
                                     }
                                 });
                             } else {
@@ -272,7 +274,7 @@ public class AddMovie extends AppCompatActivity {
                         }
                     });
         } else {
-            saveSubjAndTask();
+            saveMovei_FB();
         }
     }
 

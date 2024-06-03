@@ -28,6 +28,12 @@ public class SingIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singin);
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null)
+        {
+            finish();
+            Intent i = new Intent(SingIn.this, MainActivitychoose.class);
+            startActivity(i);
+        }
         //توثيق صفات
         etEmail2 = findViewById(R.id.etEmail2);
         etPass = findViewById(R.id.etPassword);

@@ -61,10 +61,6 @@ public class MoveiAdaptar extends ArrayAdapter<Movei>
         return vitem;
     }
 
-
-
-
-
 }
 
 

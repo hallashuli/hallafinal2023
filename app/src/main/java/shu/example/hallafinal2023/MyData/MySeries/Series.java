@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Series {
     @PrimaryKey(autoGenerate = true) //الذي ينتج بشكل تلقائي تحديد الصفة كمفتاح رئيسي
-    //رقم الفيلم
+    //رقم المسلسل
     public String sid;
     //اسم المسلسل
     public String seriesName;
@@ -17,6 +17,8 @@ public class Series {
     public String seriesLangage;
     //رقم الحلقات
     public String seriesEpisodeNumber;
+    //رقم اضافة المسلسل
+    public String sUid;
     //Gitter+Sitter
     //id
     public String getSid() {return sid;}
@@ -36,6 +38,9 @@ public class Series {
     //episodeNumber
     public String getSeriesEpisodeNumber() {return seriesEpisodeNumber;}
     public void setSeriesEpisodeNumber(String seriesEpisodeNumber) {this.seriesEpisodeNumber = seriesEpisodeNumber;}
+//sUid
+    public String getsUid() {return sUid;}
+    public void setsUid(String sUid) {this.sUid = sUid;}
     //to String
 
     @Override
@@ -47,6 +52,7 @@ public class Series {
                 ", seriesTime='" + seriesTime + '\'' +
                 ", seriesLangage='" + seriesLangage + '\'' +
                 ", seriesEpisodeNumber='" + seriesEpisodeNumber + '\'' +
+                ", sUid='" + sUid + '\'' +
                 '}';
     }
 }

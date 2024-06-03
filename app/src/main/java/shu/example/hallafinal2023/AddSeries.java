@@ -67,7 +67,7 @@ public class AddSeries extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //upload: 8
-                //checkPermission();
+                //lcheckPermission();
             }
         });
     }

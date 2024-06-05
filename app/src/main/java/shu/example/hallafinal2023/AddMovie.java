@@ -10,12 +10,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.VideoView;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -38,8 +38,8 @@ public class AddMovie extends AppCompatActivity {
 //upload: 2 add next fileds
     private final int IMAGE_PICK_CODE=100;// קוד מזהה לבקשת בחירת תמונה
     private final int PERMISSION_CODE=101;//קוד מזהה לבחירת הרשאת גישה לקבצים
-    private ImageView moveiphoto;//כפתור/ לחצן לבחירת תמונה והצגתה
-    private Uri toUploadimageUri;// כתוב הקובץ(תמונה) שרוצים להעלות
+    private VideoView moveiphoto;//כפתור/ לחצן לבחירת תמונה והצגתה
+    private Uri toUploadvideoUri;// כתוב הקובץ(תמונה) שרוצים להעלות
     private Uri downladuri;//כתובת הקוץ בענן אחרי ההעלאה
     Movei movei=new Movei();
 
@@ -55,12 +55,7 @@ public class AddMovie extends AppCompatActivity {
         time1=findViewById(R.id.time1);
         btnsave2=findViewById(R.id.btnsave2);
         //upload: 3
-        moveiphoto=findViewById(R.id.moveiphoto);
-        moveiphoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
+
 
         btnsave2.setOnClickListener(new View.OnClickListener (){
             @Override
@@ -121,13 +116,12 @@ public class AddMovie extends AppCompatActivity {
             //عرض النتيجة خطأ في حقل
             time1.setError("worng Time");
         }
-        if (toUploadimageUri!=null)
+        if (toUploadvideoUri !=null)
         {
             //
             isAllok=false;
             //
             Toast.makeText(this, "must choose image", Toast.LENGTH_SHORT).show();
-
         }
         if (isAllok) {
             movei.setMoveiName(Name);
@@ -135,9 +129,7 @@ public class AddMovie extends AppCompatActivity {
             movei.setMoveiType(Type);
             movei.setMoveiSeosonNuumber(Seoson);
             movei.setMoveiTime(Time);
-            uploadImage(toUploadimageUri);
-
-
+            uploadImage(toUploadvideoUri);
         }
     }
     //Firebase
@@ -147,7 +139,6 @@ public class AddMovie extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         String mid = db.collection("Mymovies").document().getId();
         //بناء الكائن الذي سيتم حفظه
-
         movei.setMid(mid);
         //اضافة كائن لمجموعة الافلام ومعالج حدث لفحص نجاح الاضافة
         db.collection("Mymovies").document(mid).set(movei).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -162,11 +153,11 @@ public class AddMovie extends AppCompatActivity {
             }
         });
     }
-    private void pickImageFromGallery(){
+    private void pickVideoFromGallery(){
         //implicit intent (מרומז) to pick image
         Intent intent=new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");
-        startActivityForResult(intent,IMAGE_PICK_CODE);//הפעלתה האינטנט עם קוד הבקשה
+        intent.setType("video/*");
+        startActivityForResult(Intent.createChooser(intent,"Select Video"),IMAGE_PICK_CODE);//הפעלתה האינטנט עם קוד הבקשה
     }
     //upload: 5:handle result of picked images
     /**
@@ -181,8 +172,9 @@ public class AddMovie extends AppCompatActivity {
         //אם נבחר משהו ואם זה קוד בקשת התמונה
         if (resultCode==RESULT_OK && requestCode== IMAGE_PICK_CODE){
             //a עידכון תכונת כתובת התמונה
-            toUploadimageUri = data.getData();//קבלת כתובת התמונה הנתונים שניבחרו
-            moveiphoto.setImageURI(toUploadimageUri);// הצגת התמונה שנבחרה על רכיב התמונה
+            toUploadvideoUri = data.getData();//קבלת כתובת התמונה הנתונים שניבחרו
+            moveiphoto.setVideoURI(toUploadvideoUri);// הצגת התמונה שנבחרה על רכיב התמונה
+        moveiphoto.seekTo(2);
         }
     }
     //upload: 6
@@ -201,11 +193,11 @@ public class AddMovie extends AppCompatActivity {
                 requestPermissions(permissions, PERMISSION_CODE);
             } else {
                 //permission already granted אם יש הרשאה מקודם אז מפעילים בחירת תמונה מהטלפון
-                pickImageFromGallery();
+                pickVideoFromGallery();
             }
         }
         else {//אם גרסה ישנה ולא צריך קבלת אישור
-            pickImageFromGallery();
+            pickVideoFromGallery();
         }
     }
     //upload: 7
@@ -221,7 +213,7 @@ public class AddMovie extends AppCompatActivity {
         if (requestCode==PERMISSION_CODE) {//בדיקת קוד בקשת ההרשאה
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 //permission was granted אם יש אישור
-                pickImageFromGallery();
+                pickVideoFromGallery();
             } else {
                 //permission was denied אם אין אישור
                 Toast.makeText(this, "Permission denied...!", Toast.LENGTH_SHORT).show();

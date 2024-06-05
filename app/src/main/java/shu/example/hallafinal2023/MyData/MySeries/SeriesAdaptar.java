@@ -1,4 +1,4 @@
 package shu.example.hallafinal2023.MyData.MySeries;
-import.
+import android.content.Context;
 public class SeriesAdaptar  {
 }

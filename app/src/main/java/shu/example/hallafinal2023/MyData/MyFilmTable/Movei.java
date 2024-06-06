@@ -65,4 +65,5 @@ public class Movei {
                 ", moveiSeosonNuumber='" + moveiSeosonNuumber + '\'' +
                 '}';
     }
+
 }

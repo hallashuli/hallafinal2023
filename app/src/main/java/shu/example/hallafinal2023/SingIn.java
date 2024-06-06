@@ -31,7 +31,7 @@ public class SingIn extends AppCompatActivity {
         if(FirebaseAuth.getInstance().getCurrentUser()!=null)
         {
             finish();
-            Intent i = new Intent(SingIn.this, MainActivitychoose.class);
+            Intent i = new Intent(SingIn.this, MainActivityMovie.class);
             startActivity(i);
         }
         //توثيق صفات

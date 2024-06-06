@@ -2,13 +2,16 @@ package shu.example.hallafinal2023;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RatingBar;
 
-public class Reating extends AppCompatActivity {
+import com.google.android.material.textfield.TextInputEditText;
+
+public class rating extends AppCompatActivity {
+    private TextInputEditText comment;
+    private RatingBar ratingTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

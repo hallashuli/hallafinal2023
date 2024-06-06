@@ -78,7 +78,7 @@ public class SingIn extends AppCompatActivity {
             if (myuser == null)//هل لا يوجد كائن حسب الايميل و الباسورود
                 Toast.makeText(this, "worng email or worng password", Toast.LENGTH_SHORT).show();
             else {//أن كان هنالك حساب حساب ايميل او باسورود ننتقل الى الشاشة الرئيسية
-                Intent i = new Intent(SingIn.this, MainActivitychoose.class);
+                Intent i = new Intent(SingIn.this, MainActivityMovie.class);
                 startActivity(i);
                 finish();
             }
@@ -94,7 +94,7 @@ public class SingIn extends AppCompatActivity {
                         if (task.isSuccessful()) {//
                             Toast.makeText(SingIn.this, "Signing up Succeeded", Toast.LENGTH_SHORT).show();
                             //מעבר למסך הראשי
-                            Intent intent=new Intent(SingIn.this,MainActivitychoose.class);
+                            Intent intent=new Intent(SingIn.this,MainActivityMovie.class);
                             startActivity(intent);
                         }
                         else {

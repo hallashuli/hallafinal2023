@@ -1,6 +1,4 @@
 package shu.example.hallafinal2023.MyData.myuser;
-
-
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;

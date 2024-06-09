@@ -13,20 +13,23 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="hint" />
+                android:layout_margin="15dp"
+                android:background="@color/white"
+                android:hint="Comment" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <RatingBar
             android:id="@+id/ratingTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp" />
+            android:layout_margin="10dp"
+            android:background="@color/white" />
 
     </LinearLayout>
 

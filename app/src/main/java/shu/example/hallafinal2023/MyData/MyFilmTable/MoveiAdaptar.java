@@ -27,12 +27,11 @@ public class MoveiAdaptar extends ArrayAdapter<Movei>
      * פעולה בונה מתאם
      * @param context קישור להקשר (מסך- אקטיביטי)
      * @param resource עיצוב של פריט שיציג הנתונים של העצם
-     * @param itemLayout
      */
-    public MoveiAdaptar(@NonNull Context context, int resource, int itemLayout)
+    public MoveiAdaptar(@NonNull Context context, int resource)
     {
         super(context, resource);
-        this.itemLayout = itemLayout;
+        this.itemLayout = resource;
     }
     /**
      * בונה פריט גרפי אחד בהתאם לעיצוב והצגת נתוני העצם עליו

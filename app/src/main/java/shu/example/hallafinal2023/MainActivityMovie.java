@@ -154,12 +154,9 @@ public class MainActivityMovie extends AppCompatActivity {
             //קבלת הפנייה למסד הנתונים
             FirebaseFirestore ffRef = FirebaseFirestore.getInstance();
             //קישור לקבוצה collection שרוצים לקרוא
-            ffRef.collection("MyUsers").
-                    document(FirebaseAuth.getInstance().getUid()).
-                    collection("Movei").
-                    document(spnrM.getSelectedItem().toString()).
+            ffRef.collection("Mymovies")
                     //הוספת מאזין לקריאת הנתונים
-                            collection("Tasks").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                           .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         /**
                          * תגובה לאירוע השלמת קריאת הנתונים
                          *

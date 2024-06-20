@@ -115,7 +115,7 @@ public class AddMovie extends AppCompatActivity {
             //عرض النتيجة خطأ في حقل
             time1.setError("worng Time");
         }
-        if (toUploadvideoUri !=null)
+        if (toUploadvideoUri ==null)
         {
             //
             isAllok=false;

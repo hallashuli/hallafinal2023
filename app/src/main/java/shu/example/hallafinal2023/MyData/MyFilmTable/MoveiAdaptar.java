@@ -57,7 +57,7 @@ public class MoveiAdaptar extends ArrayAdapter<Movei> {
         ImageView movei_image=vitem.findViewById(R.id.movei_image);
         TextView movei_name=vitem.findViewById(R.id.movei_name);
         ImageView _sendimage=vitem.findViewById(R.id._sendimage);
-        ImageView video_play=vitem.findViewById(R.id.video_play);
+        ImageView video_play=vitem.findViewById(R.id.video_play2);
         ImageView btnEdit=vitem.findViewById(R.id.edit_image);
         ImageView btnCall=vitem.findViewById(R.id.delete_image);
         ImageView btnDel=vitem.findViewById(R.id.informathion_image);

@@ -46,6 +46,7 @@ public class PlayvideoActivity extends AppCompatActivity {
           movei= (Movei) getIntent().getExtras().get("vid");
           nameformovei.setText(movei.getMoveiName());
           infoformovei.setText(movei.toString());
+
           movei_video.setVideoURI(Uri.parse(movei.getVideo()));
           movei_video.seekTo(2);
           play_video.setOnClickListener(new View.OnClickListener() {

@@ -56,7 +56,6 @@ public class AddMovie extends AppCompatActivity {
         btnsave2=findViewById(R.id.btnsave2);
         //upload: 3
 
-
         btnsave2.setOnClickListener(new View.OnClickListener (){
             @Override
             public void onClick(View view) {
@@ -245,7 +244,7 @@ public class AddMovie extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Uri> task) {
                                         downladuri = task.getResult();
                                         Toast.makeText(getApplicationContext(), "Uploaded", Toast.LENGTH_SHORT).show();
-                                        movei.setImage(downladuri.toString());//עדכון כתובת התמונה שהועלתה
+                                        movei.setVideo(downladuri.toString());//עדכון כתובת התמונה שהועלתה
                                         saveMovei_FB();
                                     }
                                 });

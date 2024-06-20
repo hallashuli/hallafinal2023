@@ -3,8 +3,10 @@ package shu.example.hallafinal2023.MyData.MyFilmTable;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity
-public class Movei {
+public class Movei implements Serializable {
     @PrimaryKey(autoGenerate = true) //والذي ينتج بشكل تلقائي تحديد الصفة كمفتاح رئيسي
     //رقم الفيلم
     public String mid;
@@ -21,7 +23,7 @@ public class Movei {
     //رقم الموسم
     public String moveiSeosonNuumber;
     //
-    public String image;
+    public String video;
     //Gitter+Sitter
     //id
     public String getMid() {return mid;}
@@ -45,12 +47,12 @@ public class Movei {
     public String getmUid() {return mUid;}
     public void setmUid(String mUid){this.mUid = mUid;}
 
-    public String getImage() {
-        return image;
+    public String getVideo() {
+        return video;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setVideo(String video) {
+        this.video = video;
     }
 
     @Override

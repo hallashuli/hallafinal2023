@@ -22,7 +22,7 @@ public class Movei implements Serializable {
     public String moveiLangage;
     //رقم الموسم
     public String moveiSeosonNuumber;
-    //
+    //مقطع من الفيلم
     public String video;
     //Gitter+Sitter
     //id

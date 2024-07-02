@@ -4,6 +4,8 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 @Entity
 public class Movei implements Serializable {
@@ -50,9 +52,13 @@ public class Movei implements Serializable {
     public String getVideo() {
         return video;
     }
-
+    ArrayList<MoveiRating> moveiRatings=new ArrayList<MoveiRating>();
     public void setVideo(String video) {
         this.video = video;
+    }
+
+    public ArrayList<MoveiRating> getMoveiRatings() {
+        return moveiRatings;
     }
 
     @Override

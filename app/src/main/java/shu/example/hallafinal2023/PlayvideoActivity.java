@@ -27,16 +27,16 @@ public class PlayvideoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playvideo);
-        nameformovei=findViewById(R.id.nameformovei);
-        infoformovei=findViewById(R.id.nameformovei);
+//        //
+//        nameformovei=findViewById(R.id.nameformovei);
+//        infoformovei=findViewById(R.id.nameformovei);
         movei_video=findViewById(R.id.movei_video);
-        play_video=findViewById(R.id.play_video);
-        poss_video=findViewById(R.id.poss_video);
-        stop_video=findViewById(R.id.stop_video);
-        seek_lvideo=findViewById(R.id.seek_lvideo);
-        seek_video=findViewById(R.id.seek_video);
-
-
+////
+//        play_video=findViewById(R.id.play_video);
+//        poss_video=findViewById(R.id.poss_video);
+//        stop_video=findViewById(R.id.stop_video);
+//        seek_lvideo=findViewById(R.id.seek_lvideo);
+//        seek_video=findViewById(R.id.seek_video);
     }
     @Override
     protected void onResume() {
@@ -75,7 +75,6 @@ public class PlayvideoActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     if( movei_video.canSeekForward())
                         movei_video.seekTo(1000);
-
                 }
             });
           seek_lvideo.setOnClickListener(new View.OnClickListener() {
@@ -85,14 +84,6 @@ public class PlayvideoActivity extends AppCompatActivity {
                         movei_video.seekTo(1000);
                 }
             });
-
-
-
-
-
-
-
-
         }
 
     }

@@ -18,7 +18,7 @@ public interface MoveiQuery {
     void updateFilm(Movei movei);
     /**
      * حذفق مهمة او مهمات
-     * @param tasks * حذف المهمات (حسب المفتاح الرئيسي)
+     * @param  * حذف المهمات (حسب المفتاح الرئيسي)
      */
     @Delete
     void deleteFilm(Movei...movei);

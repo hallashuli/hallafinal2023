@@ -268,12 +268,4 @@ public class AddMovie extends AppCompatActivity {
             saveMovei_FB();
         }
     }
-
-
-
-
-
-
-
-
 }

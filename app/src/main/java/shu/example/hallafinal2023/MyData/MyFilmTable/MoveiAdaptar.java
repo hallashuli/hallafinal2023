@@ -27,6 +27,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import shu.example.hallafinal2023.AddMovie;
 import shu.example.hallafinal2023.MainActivityMovie;
 import shu.example.hallafinal2023.R;
+//الهدف من هذا الكود هو عرض بيانات قائمة من الأفلام (أو أي عناصر أخرى) في واجهة المستخدم بطريقة مخصصة.
 
 public class MoveiAdaptar extends ArrayAdapter<Movei> {
     private ImageView movei_image;

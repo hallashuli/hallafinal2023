@@ -8,6 +8,7 @@ import android.os.Handler;
 
 public class SplashScreen extends AppCompatActivity
 {
+    //وظيفته هي إنشاء شاشة البداية (Splash Screen) التي تظهر للمستخدم عند بدء تشغيل التطبيق لفترة قصيرة قبل الانتقال إلى الشاشة الرئيسية أو شاشة تسجيل الدخول.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,5 +27,6 @@ public class SplashScreen extends AppCompatActivity
             }
         };
         h.postDelayed(r, 3000);
+        //إظهار شاشة البداية للمستخدم لمدة 3 ثوانٍ عند بدء تشغيل التطبيق، ثم الانتقال تلقائيًا إلى نشاط تسجيل الدخول وإغلاق شاشة البداية.
     }
 }

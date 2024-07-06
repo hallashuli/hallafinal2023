@@ -72,10 +72,9 @@ public class MoveiAdaptar extends ArrayAdapter<Movei> {
         TextView movei_name = vitem.findViewById(R.id.movei_name);
         ImageView _sendimage = vitem.findViewById(R.id._sendimage);
         ImageView video_play = vitem.findViewById(R.id.video_play2);
-        ImageView btnEdit = vitem.findViewById(R.id.edit_image);
+//        ImageView btnEdit = vitem.findViewById(R.id.edit_image);
         ImageView btnReate_image = vitem.findViewById(R.id.Reate_image);
         ImageView btnInformathion_image = vitem.findViewById(R.id.informathion_image);
-
 
         //קבלת הנתון (עצם) הנוכחי
         Movei current = getItem(position);
@@ -114,7 +113,10 @@ public class MoveiAdaptar extends ArrayAdapter<Movei> {
                 //.apply(options)
                 .into(imgbtnmed);
     }
-
+/*
+الهدف من الدالة هو تحميل صورة مصغرة لفيديو معين عرضها في عنصر ImageView المحدد.
+ إذا كان الفيديو غير متاح (فارغ)، يتم إنهاء الدالة بدون فعل شيء.
+ */
     private void downloadvideothumbnail(String video, ImageView vifbtnmed) {
         //  long interval = getPosition()*1000;
         //RequestOptions options = new RequestOptions().frame(interval);
@@ -126,49 +128,59 @@ public class MoveiAdaptar extends ArrayAdapter<Movei> {
                 //.apply(options)
                 .into(vifbtnmed);
     }
-
-    public void showvediodialog(String vedioUrl) {
-
+/*
+الهدف من هذه الدالة هو عرض الفيديو  حيث يمكن للمستخدم تشغيل الفيديو والتحكم فيه باستخدام MediaController.
+ بالإضافة إلى ذلك، يمكن للمستخدم إغلاق الفيديو بالنقر على صورة الإلغاء.
+ */
+    public void showvediodialog(String vedioUrl)//الدالة showvediodialog تأخذ متغير واحد vedioUrl، والذي تمثل رابط الفيديو الذي سيتم عرضه.
+    {
         if (dialog == null)
             dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.activity_playvideo);
         VideoView videoVdial = dialog.findViewById(R.id.movei_video);
         ImageView cancel_image = dialog.findViewById(R.id.cancel_image);
-        cancel_image.setOnClickListener(new View.OnClickListener() {
+        cancel_image.setOnClickListener(new View.OnClickListener() { //عند النقر على cancel_image، يتم إغلاق الحوار باستخدام dialog.dismiss().
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
             }
         });
+        //يتم تعيين عرض النافذة ليكون مطابقًا للأصل (MATCH_PARENT) والارتفاع ليكون محتوى قابل للتغيير (WRAP_CONTENT).
+        //و الهدف هنا هو جعل الفيديو قابلاً للإلغاء بالنقر خارج نطاقه.
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.setCancelable(true);
         // dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
-        videoVdial.setVideoURI(Uri.parse(vedioUrl));
+        videoVdial.setVideoURI(Uri.parse(vedioUrl));//يتم تعيين رابط الفيديو لـ VideoView باستخدام setVideoURI.
         // creating object of
         // media controller class
-        MediaController mediaController = new MediaController(getContext());
+        MediaController mediaController = new MediaController(getContext());//يتم إنشاء كائن MediaController للتحكم في تشغيل الفيديو.
         // sets the anchor view
         // anchor view for the videoView
-        mediaController.setAnchorView(videoVdial);
+        mediaController.setAnchorView(videoVdial);//يتم تعيين mediaController كمرساة لـ VideoView.
         // sets the media player to the videoView
-        mediaController.setMediaPlayer(videoVdial);
-
+        mediaController.setMediaPlayer(videoVdial);//يتم تعيين mediaController كتحكم في الوسائط لـ VideoView.
         // sets the media controller to the videoView
-        videoVdial.setMediaController(mediaController);
+        videoVdial.setMediaController(mediaController);//يتم عرض mediaController وتشغيل الفيديو.
         mediaController.show();
         videoVdial.start();
-        dialog.show();
+        dialog.show();//يتم عرض الفيديو باستخدام dialog.show().
     }
-
-    public void eidtreatingdialog(Movei m) {
-
+//الهدف من الدالة هو اتاحة ئللمستخدم تقييم فيلم معين .
+    public void eidtreatingdialog(Movei m) //الدالة eidtreatingdialog تأخذ متغير كائن Movei m، الذي يمثل الفيلم الذي سيتم تقييمه.
+    {
         if (dialog == null)
             dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.activity_add_reating);
         RatingBar ratingTV = dialog.findViewById(R.id.ratingTV);
         TextInputEditText comment = dialog.findViewById(R.id.comment);
         Button saveR = dialog.findViewById(R.id.saveR);
-
+        /**عند النقر على saveR، يتم تنفيذ العمليات التالية:
+         * قراءة التعليق المدخل من المستخدم وتخزينه في متغير s.
+         *قراءة التقييم المدخل من المستخدم وتخزينه في متغير r.
+         * إنشاء كائن MoveiRating جديد وتعيين التقييم (rate) والتعليق (comment) ومعرف الفيلم (tId).
+         * إضافة التقييم الجديد إلى قائمة التقييمات الخاصة بالفيلم (m.getMoveiRatings().add(mr)).
+         * تحديث بيانات الفيلم في قاعدة البيانات (من المفترض أن تكون Firebase) باستخدام دالة UpdateMovei_FB(m).
+         */
         saveR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -190,14 +202,28 @@ public class MoveiAdaptar extends ArrayAdapter<Movei> {
         MediaController mediaController = new MediaController(getContext());
         // sets the anchor view
         // anchor view for the videoView
+        /*عند النقر على زر الحفظ، يتم حفظ التقييم والتعليق في كائن MoveiRating جديد
+          ثم يتم إضافته إلى قائمة التقييمات الخاصة بالفيلم وتحديث بيانات الفيلم في قاعدة البيانات. بعد ذلك، يتم إغلاق الشاشة.
+         */
         dialog.show();
     }
-    private void UpdateMovei_FB(Movei m)
+//الهدف من الدالة هو تحديث بيانات فيلم معين في قاعدة بيانات Firebase Firestore.
+    private void UpdateMovei_FB(Movei m) // الدالة UpdateMovei_FB تتلقى  كائن Movei m، الذي يمثل الفيلم الذي سيتم تحديثه في قاعدة البيانات
     {
         //مؤشر لقاعدة البيانات
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         //بناء الكائن الذي سيتم حفظه
         //اضافة كائن لمجموعة الافلام ومعالج حدث لفحص نجاح الاضافة
+        /**
+         * يتم الوصول إلى مجموعة الأفلام في قاعدة البيانات باستخدام db.collection("Mymovies").
+         *يتم تحديد الفيلم المراد تحديثه باستخدام document(m.mid).
+         *باستخدام addOnCompleteListener نتحقق مما إذا كانت العملية ناجحة أم لا.
+         * إذا كانت العملية ناجحة (task.isSuccessful()):
+          يتم عرض رسالة نجاح باستخدام Toast.makeText(getContext(), "Succeed to Update Rating Movei", Toast.LENGTH_SHORT).show().
+         *يتم استدعاء الدالة readMoveiFrom_FB() من MainActivityMovie لتحديث واجهة المستخدم ببيانات الأفلام المحدثة.
+         * إذا فشلت العملية:
+          يتم عرض رسالة فشل باستخدام Toast.makeText(getContext(), "Failed to Update Rating Movei", Toast.LENGTH_SHORT).show().
+         */
         db.collection("Mymovies").document(m.mid).set(m).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -210,15 +236,22 @@ public class MoveiAdaptar extends ArrayAdapter<Movei> {
             }
         });
     }
-
-    public void showreatingdialog(Movei m) {
-
+//الهدف من الدالة هو عرض متوسط التقييمات والتعليقات الخاصة بفيلم معين
+    public void showreatingdialog(Movei m) // الدالة showreatingdialog تتلقى كائن Movei m، الذي يمثل الفيلم الذي سيتم عرض تقييماته وتعليقاته.
+    {
         if (dialog == null)
             dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.activity_show_rating);
         RatingBar ratingShow = dialog.findViewById(R.id.ratingShow);
         TextView commentShow = dialog.findViewById(R.id.commentShow);
         Button CancelR = dialog.findViewById(R.id.CancelR);
+        /** يتم تهيئة متغير r لحفظ متوسط التقييمات ومتغير s لجمع التعليقات.
+         * يتم استخدام حلقة for للتكرار على قائمة التقييمات الخاصة بالفيلم (m.getMoveiRatings())
+         *يتم إضافة قيمة التقييم إلى r بعد قسمتها على حجم قائمة التقييمات للحصول على المتوسط.
+         *يتم إضافة كل تعليق إلى s، مع إضافة سطر جديد بعد كل تعليق.
+         * يتم تعيين قيمة r كالتقييم في RatingBar.
+         * يتم تعيين قيمة s كنص في TextView.
+         */
         float r=0;
         StringBuffer s=new StringBuffer();
         for (MoveiRating moveiRating : m.getMoveiRatings()) {
@@ -228,6 +261,7 @@ public class MoveiAdaptar extends ArrayAdapter<Movei> {
         }
         ratingShow.setRating(r);
         commentShow.setText(s);
+        //عند النقر على CancelR، يتم إغلاق الشاشة باستخدام dialog.dismiss().
         CancelR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -244,33 +278,54 @@ public class MoveiAdaptar extends ArrayAdapter<Movei> {
         dialog.show();
     }
 
-    public void ShowMoveiInformationdialog(Movei m) {
+//public void ShowMoveiInformationdialog(Movei m) {
+//
+//    if (dialog == null)
+//        dialog = new Dialog(getContext());
+//    dialog.setContentView(R.layout.activity_show_information);
+//    TextView n = dialog.findViewById(R.id.n);
+//    TextView t = dialog.findViewById(R.id.t);
+//    TextView ti = dialog.findViewById(R.id.ti);
+//    TextView l = dialog.findViewById(R.id.l);
+//    TextView sn = dialog.findViewById(R.id.sn);
+//    Button buttonIn = dialog.findViewById(R.id.buttonIn);
+//
+//    // ملء عناصر واجهة المستخدم بالبيانات من كائن الفيلم
+//    n.setText(m.getName());
+//    t.setText(m.getTitle());
+//    ti.setText(m.getTime());
+//    l.setText(m.getLanguage());
+//    sn.setText(m.getDirectorName());
+//
+//    buttonIn.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            dialog.dismiss();
+//        }
+//    });
+//    dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//    dialog.setCancelable(false);
+//    dialog.show();
+//}
+//    /**
+//     *  פתיחת אפליקצית שליחת sms
+//     * @param msg .. ההודעה שרוצים לשלוח
+//     * @param phone
+//     */
+//    public void openSendSmsApp(String msg, String phone)
+//    {
+//        //אינטנט מרומז לפתיחת אפליקצית ההודות סמס
+//        Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
+//        //מעבירים מספר הטלפון
+//        smsIntent.setData(Uri.parse("smsto:"+phone));
+//        //ההודעה שנרצה שתופיע באפליקצית ה סמס
+//        smsIntent.putExtra("sms_body",msg);
+//        smsIntent.addFlags(FLAG_ACTIVITY_NEW_TASK);
+//        smsIntent.addCategory(Intent.CATEGORY_DEFAULT);
+//        //פתיחת אפליקציית ה סמס
+//        getContext().startActivity(smsIntent);
+//    }
 
-        if (dialog == null)
-            dialog = new Dialog(getContext());
-        dialog.setContentView(R.layout.activity_show_information);
-        TextView n= dialog.findViewById(R.id.n);
-        TextView t= dialog.findViewById(R.id.t);
-        TextView ti= dialog.findViewById(R.id.ti);
-        TextView l= dialog.findViewById(R.id.l);
-        TextView sn= dialog.findViewById(R.id.sn);
-        Button buttonIn = dialog.findViewById(R.id.buttonIn);
-        buttonIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        dialog.setCancelable(false);
-        // creating object of
-        // media controller class
-        MediaController mediaController = new MediaController(getContext());
-        // sets the anchor view
-        // anchor view for the videoView
-        dialog.show();
-
-    }
 }
 
 

@@ -115,11 +115,10 @@ public class AddMovie extends AppCompatActivity {
             //عرض النتيجة خطأ في حقل
             time1.setError("worng Time");
         }
+        //الكود المرفق هو جزء من عملية التحقق من وجود فيديو تم اختياره من قبل المستخدم قبل متابعة العملية.
         if (toUploadvideoUri ==null)
         {
-            //
             isAllok=false;
-            //
             Toast.makeText(this, "must choose image", Toast.LENGTH_SHORT).show();
         }
         if (isAllok) {
@@ -152,8 +151,10 @@ public class AddMovie extends AppCompatActivity {
             }
         });
     }
+    //لكود يفتح معرض الفيديوهات على الجهاز للسماح للمستخدم باختيار فيديو، ثم يعيد النتيجة
     private void pickVideoFromGallery(){
         //implicit intent (מרומז) to pick image
+        //يقوم الكود بإنشاء Intent باستخدام الإجراء Intent.ACTION_PICK، وهو إجراء قياسي لاختيار عنصر من قائمة أو مصدر بيانات
         Intent intent=new Intent(Intent.ACTION_PICK);
         intent.setType("video/*");
         startActivityForResult(Intent.createChooser(intent,"Select Video"),IMAGE_PICK_CODE);//הפעלתה האינטנט עם קוד הבקשה
@@ -164,6 +165,9 @@ public class AddMovie extends AppCompatActivity {
      * @param requestCode מספר הקשה
      * @param resultCode תוצאה הבקשה (אם נבחר משהו או בוטלה)
      * @param data הנתונים שנבחרו
+     *             في هذه الدالة، يتم التحقق مما إذا كان كود الطلب هو IMAGE_PICK_CODE،
+    وإذا كانت النتيجة ناجحة (RESULT_OK)، وإذا كانت البيانات غير فارغة.
+    بعد ذلك، يتم الحصول على URI للفيديو المختار من البيانات ويمكن استخدامه لمزيد من المعالجة (مثل عرض الفيديو أو رفعه)
      */
     @Override
     protected void onActivityResult(int requestCode,int resultCode,Intent data){
@@ -175,6 +179,7 @@ public class AddMovie extends AppCompatActivity {
             moveiphoto.setVideoURI(toUploadvideoUri);// הצגת התמונה שנבחרה על רכיב התמונה
         moveiphoto.seekTo(2);
         }
+
     }
     //upload: 6
     /**

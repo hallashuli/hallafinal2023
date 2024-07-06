@@ -59,12 +59,12 @@ public class MainActivityMovie extends AppCompatActivity {
         super.onResume();
         readMoveiFrom_FB();
     }
-
     @Override//بناء قائمة
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.opitionmain_menu, menu);
         return true;
     }
+    //menu
     @Override
     public boolean onOptionsItemSelected( MenuItem item) {
         if (item.getItemId() == R.id.sitting) {

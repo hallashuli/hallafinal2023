@@ -298,6 +298,13 @@ public class SingUp extends AppCompatActivity {
         }
 
     }
+    public void onClickSingupToSinginFireBace (View v){
+        checkAndSignUP_FB();
+    }
+    public void onClickCancelADDFireBace (View v){
+
+        finish();
+    }
 //    private void uploadImage(Uri filePath) {
 //        if (filePath != null) {
 //            //יצירת דיאלוג התקדמות
@@ -348,12 +355,4 @@ public class SingUp extends AppCompatActivity {
 //        }
 //    }
 
-
-    public void onClickSingupToSinginFireBace (View v){
-        checkAndSignUP_FB();
-    }
-    public void onClickCancelADDFireBace (View v){
-
-        finish();
-    }
 }

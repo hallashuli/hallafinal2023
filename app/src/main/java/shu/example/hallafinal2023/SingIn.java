@@ -23,15 +23,24 @@ public class SingIn extends AppCompatActivity {
     private TextInputEditText etPass;
     private Button btnSingin;
     private Button btnSingup;
-
+    /**
+     * تمثل دالة onCreate نقطة الدخول الرئيسية للنشاط عند إنشائه.
+     *
+     * @param savedInstanceState إذا لم يكن غير صالح، فإن هذا الكائن يحتوي على حالة النشاط المحفوظة مسبقًا.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // تعيين تخطيط واجهة المستخدم للنشاط
         setContentView(R.layout.activity_singin);
+        // التحقق مما إذا كان هناك مستخدم حالي مسجل الدخول في Firebase
         if(FirebaseAuth.getInstance().getCurrentUser()!=null)
         {
+            // إنهاء النشاط الحالي
             finish();
+            // إنشاء لبدء MainActivityMovie
             Intent i = new Intent(SingIn.this, MainActivityMovie.class);
+            // بدء النشاط الجديد
             startActivity(i);
         }
         //توثيق صفات
@@ -44,7 +53,6 @@ public class SingIn extends AppCompatActivity {
         Intent i = new Intent(SingIn.this, SingUp.class);
         startActivity(i);
     }
-
     public void onClickSinginToMainActivitychoose(View v) {
         ckeckEmailPassw();
     }

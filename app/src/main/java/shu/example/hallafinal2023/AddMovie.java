@@ -62,6 +62,7 @@ public class AddMovie extends AppCompatActivity {
         });
         //upload: 3
         moveiphoto=findViewById(R.id.moveiphoto);
+        //يتم إعداد Listener للنقر على عنصر VideoView بحيث عند النقر عليه، يتم استدعاء الدالة checkPermission
         moveiphoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,18 +71,6 @@ public class AddMovie extends AppCompatActivity {
             }
         });
     }
-    public void onClickAddMoveitoMainActivity(View v) {
-        //to open new activity from current to next activity
-        Intent i = new Intent(AddMovie.this, MainActivityMovie.class);
-        startActivity(i);
-    }
-    public void onClickAddMoveitoMainActivityMovei(View v) {
-        //to open new activity from current to next activity
-        Intent i = new Intent(AddMovie.this, MainActivityMovie.class);
-        startActivity(i);
-    }
-
-
     //دالة تفحص معطيات الفيلم
     private void cheackMoveiDetails(){
         boolean isAllok = true; // يحوي نتيجة فحص الحقول ان كانت  السليمة
@@ -129,7 +118,7 @@ public class AddMovie extends AppCompatActivity {
         if (toUploadvideoUri ==null)
         {
             isAllok=false;
-            Toast.makeText(this, "must choose image", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "must to add clup", Toast.LENGTH_SHORT).show();
         }
         if (isAllok) {
             movei.setMoveiName(Name);
@@ -162,6 +151,7 @@ public class AddMovie extends AppCompatActivity {
         });
     }
     //لكود يفتح معرض الفيديوهات على الجهاز للسماح للمستخدم باختيار فيديو، ثم يعيد النتيجة
+    //يتم إنشاء نية (Intent) لاختيار فيديو من المعرض، وإعادة النتيجة إلى النشاط.
     private void pickVideoFromGallery(){
         //implicit intent (מרומז) to pick image
         //يقوم الكود بإنشاء Intent باستخدام الإجراء Intent.ACTION_PICK، وهو إجراء قياسي لاختيار عنصر من قائمة أو مصدر بيانات
@@ -180,6 +170,7 @@ public class AddMovie extends AppCompatActivity {
     وإذا كانت النتيجة ناجحة (RESULT_OK)، وإذا كانت البيانات غير فارغة.
     بعد ذلك، يتم الحصول على URI للفيديو المختار من البيانات ويمكن استخدامه لمزيد من المعالجة (مثل عرض الفيديو أو رفعه)
      */
+    //يتم التحقق من كود الطلب والنتيجة، وإذا كانت النتيجة ناجحة، يتم الحصول على عنوان URI للفيديو المختار ويتم عرضه في VideoView.
     @Override
     protected void onActivityResult(int requestCode,int resultCode,Intent data){
         super.onActivityResult(requestCode,resultCode,data);
@@ -195,6 +186,7 @@ public class AddMovie extends AppCompatActivity {
     /**
      * בדיקה האם יש הרשאה לגישה לקבצים בטלפון
      */
+    //يتم التحقق من إصدار النظام وطلب إذن الوصول إلى الملفات إذا لم يكن موجودًا، وإذا كان الإذن موجودًا، يتم استدعاء pickVideoFromGallery().
     private void checkPermission()
     {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {//בדיקת גרסאות
@@ -222,6 +214,7 @@ public class AddMovie extends AppCompatActivity {
      *   PERMISSION_GRANTED אושר or PERMISSION_DENIED נדחה . Never null.
      */
     @Override
+    //يتم التحقق من كود طلب الإذن وإذا تم منحه، يتم استدعاء pickVideoFromGallery()، وإذا تم رفضه، يتم عرض رسالة Toast.
     public void onRequestPermissionsResult(int requestCode,String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode==PERMISSION_CODE) {//בדיקת קוד בקשת ההרשאה
@@ -234,6 +227,11 @@ public class AddMovie extends AppCompatActivity {
             }
         }
     }
+
+    /**
+     *يتم رفع الفيديو إلى Firebase Storage ويتم عرض تقدم الرفع في Dialog،
+     *  وعند اكتمال الرفع، يتم الحصول على عنوان URI للفيديو المرفوع وتحديث كائن Movei بهذا العنوان.
+     */
     private void uploadImage(Uri filePath) {
         if (filePath != null) {
             //יצירת דיאלוג התקדמות
@@ -282,5 +280,15 @@ public class AddMovie extends AppCompatActivity {
         } else {
             saveMovei_FB();
         }
+    }
+    public void onClickAddMoveitoMainActivity(View v) {
+        //to open new activity from current to next activity
+        Intent i = new Intent(AddMovie.this, MainActivityMovie.class);
+        startActivity(i);
+    }
+    public void onClickAddMoveitoMainActivityMovei(View v) {
+        //to open new activity from current to next activity
+        Intent i = new Intent(AddMovie.this, MainActivityMovie.class);
+        startActivity(i);
     }
 }

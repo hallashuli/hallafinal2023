@@ -88,6 +88,9 @@ public class  MoveiAdaptar extends ArrayAdapter<Movei> {
         Movei current = getItem(position);
         //הצגת הנתונים על שדות הרכיב הגרפי
         movei_name.setText(current.getMoveiName());
+        /**يتم هنا تحميل الصورة المصغرة للفيديو بواسطة دالة downloadvideothumbnail
+         *  التي تأخذ عنوان الفيديو (current.getVideo()) ومكان عرض الصورة (movei_image).
+         */
         downloadvideothumbnail(current.getVideo(), movei_image);
         video_play.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -142,7 +142,6 @@ public class MainActivityMovie extends AppCompatActivity {
             AlertDialog dialog=builder.create();//بناء شباك الحوار ديالوغ
             dialog.show();//عرض الشباك
         }
-
         /**
          * קריאת נתונים ממסד הנתונים firestore
          *

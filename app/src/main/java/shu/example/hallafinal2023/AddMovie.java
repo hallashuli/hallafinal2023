@@ -42,7 +42,6 @@ public class AddMovie extends AppCompatActivity {
     private Uri toUploadvideoUri;// כתוב הקובץ(תמונה) שרוצים להעלות \ هذا كائن من نوع Uri يمثل عنوان الملف (الصورة) الذي نريد رفعه
     private Uri downladuri;//כתובת הקוץ בענן אחרי ההעלאה \هذا كائن من نوع Uri يمثل عنوان الملف في السحابة بعد رفعه.
     Movei movei=new Movei(); //هذا يقوم بإنشاء كائن جديد من الفئة Movei.
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +54,6 @@ public class AddMovie extends AppCompatActivity {
         time1=findViewById(R.id.time1);
         btnsave2=findViewById(R.id.btnsave2);
         //upload: 3
-
         btnsave2.setOnClickListener(new View.OnClickListener (){
             @Override
             public void onClick(View view) {
@@ -72,6 +70,18 @@ public class AddMovie extends AppCompatActivity {
             }
         });
     }
+    public void onClickAddMoveitoMainActivity(View v) {
+        //to open new activity from current to next activity
+        Intent i = new Intent(AddMovie.this, MainActivityMovie.class);
+        startActivity(i);
+    }
+    public void onClickAddMoveitoMainActivityMovei(View v) {
+        //to open new activity from current to next activity
+        Intent i = new Intent(AddMovie.this, MainActivityMovie.class);
+        startActivity(i);
+    }
+
+
     //دالة تفحص معطيات الفيلم
     private void cheackMoveiDetails(){
         boolean isAllok = true; // يحوي نتيجة فحص الحقول ان كانت  السليمة
@@ -180,7 +190,6 @@ public class AddMovie extends AppCompatActivity {
             moveiphoto.setVideoURI(toUploadvideoUri);// הצגת התמונה שנבחרה על רכיב התמונה
         moveiphoto.seekTo(2);
         }
-
     }
     //upload: 6
     /**

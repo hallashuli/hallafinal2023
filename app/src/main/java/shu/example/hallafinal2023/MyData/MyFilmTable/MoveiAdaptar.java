@@ -34,7 +34,6 @@ import shu.example.hallafinal2023.MainActivityMovie;
 import shu.example.hallafinal2023.MyData.myuser.Myuser;
 import shu.example.hallafinal2023.R;
 //الهدف من هذا الكود هو عرض بيانات قائمة من الأفلام (أو أي عناصر أخرى) في واجهة المستخدم بطريقة مخصصة.
-
 public class  MoveiAdaptar extends ArrayAdapter<Movei> {
     private ImageView movei_image;
     private TextView movei_name;
@@ -47,17 +46,28 @@ public class  MoveiAdaptar extends ArrayAdapter<Movei> {
     //המזהה של קובץ עיצוב הפריט
     private final int itemLayout;
     Myuser users=new Myuser();
-
-
     /**
      * פעולה בונה מתאם
      *
      * @param context  קישור להקשר (מסך- אקטיביטי)
      * @param resource עיצוב של פריט שיציג הנתונים של העצם
      */
+    /*
+    هي دالة البناء (constructor) لفئة MoveiAdaptar.
+    الهدف من هذه الدالة هو تهيئة كائن جديد من الفئة MoveiAdaptar باستخدام المعطيات المقدمة.
+     */
+    /*
+    *المعطى context هو كائن من نوع Context، ويُستخدم عادة لتوفير الوصول إلى موارد التطبيق والمعلومات الخاصة به.
+     يمكن استخدام context للوصول إلى الموارد:
+    *  مثل السلاسل النصية (strings)، الصور (drawables)، الألوان (colors)، تخطيطات الواجهة (layouts)، وغيرها.
+    * المعطى resource هو معرف لمورد تخطيط (layout resource) يُستخدم لتحديد تصميم العناصر التي سيتم عرضها في المحول (adapter).
+    * عند استخدام المحول (adapter) لعرض مجموعة من البيانات في مكونات عرض مثل ListView، GridView، أو RecyclerView،
+     فإنك تحتاج إلى طريقة لتحديد كيف يجب أن تبدو كل عنصر من العناصر في هذه المجموعة. هنا يأتي دور layout resource.
+     * */
+    //
     public MoveiAdaptar(@NonNull Context context, int resource) {
         super(context, resource);
-        this.itemLayout = resource;
+        this.itemLayout = resource;//يعين قيمة المتغير resource إلى المتغير الخاص بالفئة itemLayout. هذا يتيح ل(adapter) معرفة تخطيط العناصر التي سيتم عرضها.
     }
 
     /**
@@ -71,20 +81,20 @@ public class  MoveiAdaptar extends ArrayAdapter<Movei> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        //בניית הפריט הגרפי מתו קובץ העיצוב
-        View vitem = convertView;
+        //בניית הפריט הגרפי מתו קובץ העיצוב\بناء القائمة الرسومية من ملف التصميم
+        View vitem = convertView;//convertView: العرض القديم الذي يمكن إعادة استخدامه.
         if (vitem == null)
             vitem = LayoutInflater.from(getContext()).inflate(itemLayout, parent, false);
-        //קבלת הפניות לרכיבים בקובץ העיצוב
-        ImageView movei_image = vitem.findViewById(R.id.movei_image);
-        TextView movei_name = vitem.findViewById(R.id.movei_name);
-        ImageView _sendimage = vitem.findViewById(R.id._sendimage);
-        ImageView video_play = vitem.findViewById(R.id.video_play2);
+        //קבלת הפניות לרכיבים בקובץ העיצוב\ // الحصول على المراجع إلى المكونات في ملف التصميم
+        ImageView movei_image = vitem.findViewById(R.id.movei_image);//صورة من الفيديو
+        TextView movei_name = vitem.findViewById(R.id.movei_name);//عرض اسم الفيلم
+        ImageView _sendimage = vitem.findViewById(R.id._sendimage);//ارسال
+        ImageView video_play = vitem.findViewById(R.id.video_play2);//تشغيل الفيديو
 //        ImageView btnEdit = vitem.findViewById(R.id.edit_image);
-        ImageView btnReate_image = vitem.findViewById(R.id.Reate_image);
-        ImageView btnInformathion_image = vitem.findViewById(R.id.informathion_image);
+       ImageView btnReate_image = vitem.findViewById(R.id.Reate_image);//تقييم
+       ImageView btnInformathion_image = vitem.findViewById(R.id.informathion_image);//اظهار التقييم
 
-        //קבלת הנתון (עצם) הנוכחי
+        //الحصول على البيانات (الكائن) الحالية\קבלת הנתון (עצם) הנוכחי
         Movei current = getItem(position);
         //הצגת הנתונים על שדות הרכיב הגרפי
         movei_name.setText(current.getMoveiName());
@@ -92,6 +102,7 @@ public class  MoveiAdaptar extends ArrayAdapter<Movei> {
          *  التي تأخذ عنوان الفيديو (current.getVideo()) ومكان عرض الصورة (movei_image).
          */
         downloadvideothumbnail(current.getVideo(), movei_image);
+
         video_play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -145,6 +156,19 @@ public class  MoveiAdaptar extends ArrayAdapter<Movei> {
                 //.apply(options)
                 .into(vifbtnmed);
     }
+
+    /**
+     *if (dialog == null)
+               dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.______________);
+     *  الهدف من هذه الاوامر هو انشاء جديد dialogاذا لم يكن موجدًا
+     *إذا كان dialog هو null، فهذا يعني أنه لم يتم إنشاؤه بعد.
+     * إذا تحقق الشرط (dialog == null)،
+      يتم إنشاء واحد جديد باستخدام Dialog وبتمرير سياق التطبيق أو النشاط (Activity) بواسطة getContext().
+     dialog.setContentView(R.layout.-------------);
+     بعد التأكد من وجوده  (إما تم إنشاؤه حديثًا أو كان موجودًا بالفعل)، يتم تعيين تخطيط المحتوى باستخدام setContentView.
+     R.layout.---- يشير إلى ملف تخطيط XML يحتوي على تعريف واجهة المستخدم التي سيتم عرضها داخل الحوار.
+     */
 /*
 الهدف من هذه الدالة هو عرض الفيديو  حيث يمكن للمستخدم تشغيل الفيديو والتحكم فيه باستخدام MediaController.
  بالإضافة إلى ذلك، يمكن للمستخدم إغلاق الفيديو بالنقر على صورة الإلغاء.
@@ -188,10 +212,11 @@ public class  MoveiAdaptar extends ArrayAdapter<Movei> {
         if (dialog == null)
             dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.activity_add_reating);
+        // العثور على قيم في التخطيط
         RatingBar ratingTV = dialog.findViewById(R.id.ratingTV);
         TextInputEditText comment = dialog.findViewById(R.id.comment);
-        Button saveR = dialog.findViewById(R.id.saveR);
-        /**عند النقر على saveR، يتم تنفيذ العمليات التالية:
+        Button saveR = dialog.findViewById(R.id.saveR);   // عند النقر على زر الحفظ، قم بتنفيذ العمليات التالية:
+        /*
          * قراءة التعليق المدخل من المستخدم وتخزينه في متغير s.
          *قراءة التقييم المدخل من المستخدم وتخزينه في متغير r.
          * إنشاء كائن MoveiRating جديد وتعيين التقييم (rate) والتعليق (comment) ومعرف الفيلم (tId).
@@ -201,14 +226,19 @@ public class  MoveiAdaptar extends ArrayAdapter<Movei> {
         saveR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // قراءة التعليق والتقييم من المستخدم
                 String s=comment.getText().toString();
                 float r= ratingTV.getRating();
+                // إنشاء كائن MoveiRating جديد وتعيين القيم
                 MoveiRating mr=new MoveiRating();
                 mr.setRate(r);
                 mr.setComment(s);
                 mr.settId(m.getmUid());
+                // إضافة التقييم الجديد إلى قائمة تقييمات الفيلم
                 m.getMoveiRatings().add(mr);
+                // تحديث بيانات الفيلم في قاعدة البيانات
                 UpdateMovei_FB(m);
+                // إغلاق بعد حفظ التقييم
                 dialog.dismiss();
             }
         });
@@ -235,19 +265,19 @@ public class  MoveiAdaptar extends ArrayAdapter<Movei> {
          * يتم الوصول إلى مجموعة الأفلام في قاعدة البيانات باستخدام db.collection("Mymovies").
          *يتم تحديد الفيلم المراد تحديثه باستخدام document(m.mid).
          *باستخدام addOnCompleteListener نتحقق مما إذا كانت العملية ناجحة أم لا.
-         * إذا كانت العملية ناجحة (task.isSuccessful()):
-          يتم عرض رسالة نجاح باستخدام Toast.makeText(getContext(), "Succeed to Update Rating Movei", Toast.LENGTH_SHORT).show().
-         *يتم استدعاء الدالة readMoveiFrom_FB() من MainActivityMovie لتحديث واجهة المستخدم ببيانات الأفلام المحدثة.
-         * إذا فشلت العملية:
-          يتم عرض رسالة فشل باستخدام Toast.makeText(getContext(), "Failed to Update Rating Movei", Toast.LENGTH_SHORT).show().
          */
+        // الوصول إلى مجموعة الأفلام في قاعدة البيانات باستخدام db.collection("Mymovies")
+        // وتحديد الفيلم المراد تحديثه باستخدام document(m.mid)
         db.collection("Mymovies").document(m.mid).set(m).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
+                if (task.isSuccessful()) {  // التحقق مما إذا كانت العملية ناجحة أم لا
+                    // إذا كانت العملية ناجحة
                     Toast.makeText(getContext(), "Succeed to Update Rating Movei", Toast.LENGTH_SHORT).show();
+                    // استدعاء الدالة readMoveiFrom_FB لتحديث واجهة المستخدم ببيانات الأفلام المحدثة
                     ((MainActivityMovie)getContext()).readMoveiFrom_FB();
                 } else {
+                    // إذا فشلت العملية
                     Toast.makeText(getContext(), "Failed to Update Rating Movei", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -259,6 +289,7 @@ public class  MoveiAdaptar extends ArrayAdapter<Movei> {
         if (dialog == null)
             dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.activity_show_rating);
+        // العثور على القيم في التخطيط
         RatingBar ratingShow = dialog.findViewById(R.id.ratingShow);
         TextView commentShow = dialog.findViewById(R.id.commentShow);
         Button CancelR = dialog.findViewById(R.id.CancelR);
@@ -269,11 +300,13 @@ public class  MoveiAdaptar extends ArrayAdapter<Movei> {
          * يتم تعيين قيمة r كالتقييم في RatingBar.
          * يتم تعيين قيمة s كنص في TextView.
          */
+        // تهيئة متغير لحفظ مجموع التقييمات وآخر لجمع التعليقات
         float r=0;
         StringBuffer s=new StringBuffer();
+        // التكرار على قائمة التقييمات الخاصة بالفيلم
         for (MoveiRating moveiRating : m.getMoveiRatings()) {
-            r=r+moveiRating.getRate()/m.getMoveiRatings().size();
-            s.append(moveiRating.getComment());
+            r=r+moveiRating.getRate()/m.getMoveiRatings().size();// جمع التقييمات
+            s.append(moveiRating.getComment()); // جمع التعليقات مع إضافة سطر جديد بعد كل تعليق
             s.append('\n');//enter
         }
         ratingShow.setRating(r);
@@ -300,6 +333,7 @@ public class  MoveiAdaptar extends ArrayAdapter<Movei> {
      * @param msg   .. ההודעה שרוצים לשלוח
      * @param phone
      */
+    //فتح تطبيق WhatsApp وإرسال رسالة إلى رقم هاتف محدد.
     public void openSendWhatsAppV2(String msg, String phone) {
         //אינטנט מרומז לפתיחת אפליקצית ההודות סמס
         Intent sendIntent = new Intent(Intent.ACTION_VIEW);
@@ -315,7 +349,7 @@ public class  MoveiAdaptar extends ArrayAdapter<Movei> {
         sendIntent.setData(Uri.parse(url));
         sendIntent.addFlags(FLAG_ACTIVITY_NEW_TASK);
         sendIntent.addCategory(Intent.CATEGORY_DEFAULT);
-        //פתיחת אפליקציית ה סמס
+        //פתיחת אפליקציית ה סמס \    // فتح تطبيق WhatsApp
         getContext().startActivity(sendIntent);
     }/**
 

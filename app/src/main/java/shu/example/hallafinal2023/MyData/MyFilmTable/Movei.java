@@ -51,16 +51,17 @@ public class Movei implements Serializable {
 
     public String getVideo() {
         return video;
-    }
-    ArrayList<MoveiRating> moveiRatings=new ArrayList<MoveiRating>();
-    public void setVideo(String video) {
-        this.video = video;
-    }
-
+    }// دالة للحصول على قيمة المتغير video
+    /**
+     *  يقوم بإنشاء مصفوفة ArrayList لتخزين كائنات من النوع MoveiRating.
+     الـ ArrayList هي نوع من المصفوفات التي يمكنها تغيير حجمها تلقائيًا.*/
+    ArrayList<MoveiRating> moveiRatings=new ArrayList<MoveiRating>();// مصفوفة لتخزين تقييمات الأفلام
+    // دالة لتعيين قيمة للمتغير video
+    public void setVideo(String video) {this.video = video;}
+    // دالة للحصول على المصفوفة التي تحتوي على تقييمات الأفلام
     public ArrayList<MoveiRating> getMoveiRatings() {
         return moveiRatings;
     }
-
     @Override
     public String toString() {
         return "Movei{" +
@@ -73,5 +74,4 @@ public class Movei implements Serializable {
                 ", moveiSeosonNuumber='" + moveiSeosonNuumber + '\'' +
                 '}';
     }
-
 }

@@ -36,12 +36,12 @@ public class AddMovie extends AppCompatActivity {
     private Button btncancel2;
     //upload: 1 add Xml image view or button and upload button
 //upload: 2 add next fileds
-    private final int IMAGE_PICK_CODE=100;// קוד מזהה לבקשת בחירת תמונה
-    private final int PERMISSION_CODE=101;//קוד מזהה לבחירת הרשאת גישה לקבצים
-    private VideoView moveiphoto;//כפתור/ לחצן לבחירת תמונה והצגתה
-    private Uri toUploadvideoUri;// כתוב הקובץ(תמונה) שרוצים להעלות
-    private Uri downladuri;//כתובת הקוץ בענן אחרי ההעלאה
-    Movei movei=new Movei();
+    private final int IMAGE_PICK_CODE=100;// קוד מזהה לבקשת בחירת תמונה \ كود كود تعريف يستخدم عند اختيار صورة من المعرض
+    private final int PERMISSION_CODE=101;//\   كود تعريف لطلب إذن الوصول إلى الملفات من الجهاز\קוד מזהה לבחירת הרשאת גישה לקבצים
+    private VideoView moveiphoto;//כפתור/ לחצן לבחירת תמונה והצגתה\ كائن من نوع VideoView يستخدم لعرض الفيديو.
+    private Uri toUploadvideoUri;// כתוב הקובץ(תמונה) שרוצים להעלות \ هذا كائن من نوع Uri يمثل عنوان الملف (الصورة) الذي نريد رفعه
+    private Uri downladuri;//כתובת הקוץ בענן אחרי ההעלאה \هذا كائن من نوع Uri يمثل عنوان الملف في السحابة بعد رفعه.
+    Movei movei=new Movei(); //هذا يقوم بإنشاء كائن جديد من الفئة Movei.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,6 +157,7 @@ public class AddMovie extends AppCompatActivity {
         //يقوم الكود بإنشاء Intent باستخدام الإجراء Intent.ACTION_PICK، وهو إجراء قياسي لاختيار عنصر من قائمة أو مصدر بيانات
         Intent intent=new Intent(Intent.ACTION_PICK);
         intent.setType("video/*");
+        //تشغيل Activity و تعيد لنا شيء و هنا تعيد لنا فيديو
         startActivityForResult(Intent.createChooser(intent,"Select Video"),IMAGE_PICK_CODE);//הפעלתה האינטנט עם קוד הבקשה
     }
     //upload: 5:handle result of picked images

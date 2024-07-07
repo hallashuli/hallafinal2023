@@ -1,7 +1,9 @@
 package shu.example.hallafinal2023.MyData.MyFilmTable;
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,12 +26,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import shu.example.hallafinal2023.AddMovie;
 import shu.example.hallafinal2023.MainActivityMovie;
+import shu.example.hallafinal2023.MyData.myuser.Myuser;
 import shu.example.hallafinal2023.R;
 //الهدف من هذا الكود هو عرض بيانات قائمة من الأفلام (أو أي عناصر أخرى) في واجهة المستخدم بطريقة مخصصة.
 
-public class MoveiAdaptar extends ArrayAdapter<Movei> {
+public class  MoveiAdaptar extends ArrayAdapter<Movei> {
     private ImageView movei_image;
     private TextView movei_name;
     private ImageView _sendimage;
@@ -40,6 +46,8 @@ public class MoveiAdaptar extends ArrayAdapter<Movei> {
     private Dialog dialog;
     //המזהה של קובץ עיצוב הפריט
     private final int itemLayout;
+    Myuser users=new Myuser();
+
 
     /**
      * פעולה בונה מתאם
@@ -97,6 +105,12 @@ public class MoveiAdaptar extends ArrayAdapter<Movei> {
             @Override
             public void onClick(View view) {
                 showreatingdialog(current);
+            }
+        });
+        _sendimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openSendWhatsAppV2(" ", users.getPhone());
             }
         });
         return vitem;
@@ -277,6 +291,32 @@ public class MoveiAdaptar extends ArrayAdapter<Movei> {
         // anchor view for the videoView
         dialog.show();
     }
+    /**
+     * פתיחת אפליקצית שליחת whatsapp
+     *
+     * @param msg   .. ההודעה שרוצים לשלוח
+     * @param phone
+     */
+    public void openSendWhatsAppV2(String msg, String phone) {
+        //אינטנט מרומז לפתיחת אפליקצית ההודות סמס
+        Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+        ;
+        String url = null;
+        try {
+            url = "https://api.whatsapp.com/send?phone=" + phone + "&text=" + URLEncoder.encode(msg, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            //throw new RuntimeException(e);
+            e.printStackTrace();
+            Toast.makeText(getContext(), "there is no whatsapp!!", Toast.LENGTH_SHORT).show();
+        }
+        sendIntent.setData(Uri.parse(url));
+        sendIntent.addFlags(FLAG_ACTIVITY_NEW_TASK);
+        sendIntent.addCategory(Intent.CATEGORY_DEFAULT);
+        //פתיחת אפליקציית ה סמס
+        getContext().startActivity(sendIntent);
+    }/**
+
+
 
 //public void ShowMoveiInformationdialog(Movei m) {
 //
@@ -327,8 +367,3 @@ public class MoveiAdaptar extends ArrayAdapter<Movei> {
 //    }
 
 }
-
-
-
-
-

@@ -38,7 +38,7 @@ public class  MoveiAdaptar extends ArrayAdapter<Movei> {
     private ImageView movei_image;
     private TextView movei_name;
     private ImageView _sendimage;
-    private ImageView edit_image;
+   // private ImageView edit_image;
     private ImageView Reate_image;
     private ImageView informathion_image;
     private ImageView video_play;
@@ -48,20 +48,18 @@ public class  MoveiAdaptar extends ArrayAdapter<Movei> {
     Myuser users=new Myuser();
     /**
      * פעולה בונה מתאם
-     *
      * @param context  קישור להקשר (מסך- אקטיביטי)
      * @param resource עיצוב של פריט שיציג הנתונים של העצם
      */
     /*
     هي دالة البناء (constructor) لفئة MoveiAdaptar.
     الهدف من هذه الدالة هو تهيئة كائن جديد من الفئة MoveiAdaptar باستخدام المعطيات المقدمة.
-     */
     /*
     *المعطى context هو كائن من نوع Context، ويُستخدم عادة لتوفير الوصول إلى موارد التطبيق والمعلومات الخاصة به.
      يمكن استخدام context للوصول إلى الموارد:
     *  مثل السلاسل النصية (strings)، الصور (drawables)، الألوان (colors)، تخطيطات الواجهة (layouts)، وغيرها.
-    * المعطى resource هو معرف لمورد تخطيط (layout resource) يُستخدم لتحديد تصميم العناصر التي سيتم عرضها في المحول (adapter).
-    * عند استخدام المحول (adapter) لعرض مجموعة من البيانات في مكونات عرض مثل ListView، GridView، أو RecyclerView،
+    * المعطى resource هو معرف لمورد تخطيط (layout resource) يُستخدم لتحديد تصميم العناصر التي سيتم عرضها في (adapter).
+    * عند استخدام (adapter) لعرض مجموعة من البيانات في مكونات عرض مثل ListView، GridView، أو RecyclerView،
      فإنك تحتاج إلى طريقة لتحديد كيف يجب أن تبدو كل عنصر من العناصر في هذه المجموعة. هنا يأتي دور layout resource.
      * */
     //
@@ -69,7 +67,6 @@ public class  MoveiAdaptar extends ArrayAdapter<Movei> {
         super(context, resource);
         this.itemLayout = resource;//يعين قيمة المتغير resource إلى المتغير الخاص بالفئة itemLayout. هذا يتيح ل(adapter) معرفة تخطيط العناصر التي سيتم عرضها.
     }
-
     /**
      * בונה פריט גרפי אחד בהתאם לעיצוב והצגת נתוני העצם עליו
      *
@@ -93,40 +90,47 @@ public class  MoveiAdaptar extends ArrayAdapter<Movei> {
 //        ImageView btnEdit = vitem.findViewById(R.id.edit_image);
        ImageView btnReate_image = vitem.findViewById(R.id.Reate_image);//تقييم
        ImageView btnInformathion_image = vitem.findViewById(R.id.informathion_image);//اظهار التقييم
-
+        //Current
         //الحصول على البيانات (الكائن) الحالية\קבלת הנתון (עצם) הנוכחי
         Movei current = getItem(position);
-        //הצגת הנתונים על שדות הרכיב הגרפי
+
+        // عرض اسم الفيلم في عنصر النص
         movei_name.setText(current.getMoveiName());
+
         /**يتم هنا تحميل الصورة المصغرة للفيديو بواسطة دالة downloadvideothumbnail
          *  التي تأخذ عنوان الفيديو (current.getVideo()) ومكان عرض الصورة (movei_image).
          */
+        //تحميل الصورة المصغرة للفيديو بواسطة دالة downloadvideothumbnail
         downloadvideothumbnail(current.getVideo(), movei_image);
-
+//// إعداد Listener  للنقر على زر تشغيل الفيديو
         video_play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showvediodialog(current.video);
             }
         });
+        //  //  إعداد Listener  للنقر على زر تقييم الفيلم
         btnReate_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 eidtreatingdialog(current);
             }
         });
+        //// إعداد Listener  للنقر على زر عرض تقييم الفيلم
         btnInformathion_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showreatingdialog(current);
             }
         });
+        //إرسال رسالة عبر واتساب// إعداد Listener  للنقر على زر
         _sendimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openSendWhatsAppV2(" ", users.getPhone());
             }
         });
+        // إعادة العرض المخصص للعنصر الحالي
         return vitem;
     }
 
@@ -156,7 +160,6 @@ public class  MoveiAdaptar extends ArrayAdapter<Movei> {
                 //.apply(options)
                 .into(vifbtnmed);
     }
-
     /**
      *if (dialog == null)
                dialog = new Dialog(getContext());
@@ -180,7 +183,7 @@ public class  MoveiAdaptar extends ArrayAdapter<Movei> {
         dialog.setContentView(R.layout.activity_playvideo);
         VideoView videoVdial = dialog.findViewById(R.id.movei_video);
         ImageView cancel_image = dialog.findViewById(R.id.cancel_image);
-        cancel_image.setOnClickListener(new View.OnClickListener() { //عند النقر على cancel_image، يتم إغلاق الحوار باستخدام dialog.dismiss().
+        cancel_image.setOnClickListener(new View.OnClickListener() { //عند النقر على cancel_image، يتم إغلاق الشاشة باستخدام dialog.dismiss().
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
@@ -206,7 +209,7 @@ public class  MoveiAdaptar extends ArrayAdapter<Movei> {
         videoVdial.start();
         dialog.show();//يتم عرض الفيديو باستخدام dialog.show().
     }
-//الهدف من الدالة هو اتاحة ئللمستخدم تقييم فيلم معين .
+//الهدف من الدالة هو اتاحة للمستخدم تقييم فيلم معين .
     public void eidtreatingdialog(Movei m) //الدالة eidtreatingdialog تأخذ متغير كائن Movei m، الذي يمثل الفيلم الذي سيتم تقييمه.
     {
         if (dialog == null)

@@ -40,7 +40,7 @@ public class AddMovie extends AppCompatActivity {
     private final int PERMISSION_CODE=101;//\   كود تعريف لطلب إذن الوصول إلى الملفات من الجهاز\קוד מזהה לבחירת הרשאת גישה לקבצים
     private VideoView moveiphoto;//כפתור/ לחצן לבחירת תמונה והצגתה\ كائن من نوع VideoView يستخدم لعرض الفيديو.
     private Uri toUploadvideoUri;// כתוב הקובץ(תמונה) שרוצים להעלות \ هذا كائن من نوع Uri يمثل عنوان الملف (الصورة) الذي نريد رفعه
-    private Uri downladuri;//כתובת הקוץ בענן אחרי ההעלאה \هذا كائن من نوع Uri يمثل عنوان الملف في السحابة بعد رفعه.
+    private Uri downladuri;//כתובת הקוץ בענן אחרי ההעלאה \هذا كائن من نوع Uri يمثل عنوان الملف (رابط الفيديو) في السحابة بعد رفعه.
     Movei movei=new Movei(); //هذا يقوم بإنشاء كائن جديد من الفئة Movei.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -227,7 +227,6 @@ public class AddMovie extends AppCompatActivity {
             }
         }
     }
-
     /**
      *يتم رفع الفيديو إلى Firebase Storage ويتم عرض تقدم الرفع في Dialog،
      *  وعند اكتمال الرفع، يتم الحصول على عنوان URI للفيديو المرفوع وتحديث كائن Movei بهذا العنوان.

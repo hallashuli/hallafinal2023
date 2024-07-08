@@ -36,6 +36,7 @@ public class MainActivityMovie extends AppCompatActivity {
     private Spinner spnrM;
     private ListView istTv;
     private MoveiAdaptar moveiAdaptar;
+    private ArrayList<Movei> originalList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

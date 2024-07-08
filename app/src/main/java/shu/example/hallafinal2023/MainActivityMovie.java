@@ -42,7 +42,9 @@ public class MainActivityMovie extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_movie);
         istTv = findViewById(R.id.istTvM);
+        //الغرض: إنشاء كائن جديد من فئة MoveiAdaptar، وهو مخصص لعرض البيانات في واجهة المستخدم.
         moveiAdaptar = new MoveiAdaptar(this, R.layout.movei_item_layout);
+        //يقوم بتعيين moveiAdaptar كمحول لـ istTv، بحيث يستخدم moveiAdaptar لتحديد كيفية عرض البيانات في القائمة.
         istTv.setAdapter(moveiAdaptar);
         fabAdd = findViewById(R.id.fabAdd);
         fabAdd.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +79,7 @@ public class MainActivityMovie extends AppCompatActivity {
         if (item.getItemId()==R.id.itmAddMovei)
         {
             Toast.makeText(MainActivityMovie.this, "Add", Toast.LENGTH_SHORT).show();
-
+            Intent i=new Intent(MainActivityMovie.this,AddMovie.class);
         }
         return true;
     }
@@ -124,7 +126,7 @@ public class MainActivityMovie extends AppCompatActivity {
             builder.setMessage("Are you sure?");//تحدي فحوى شباك الحوار
             builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
-                //نضغط على زر و معالج الحدث
+                //  // عند الضغط على زر "Yes" يتم معالجة الحدث
                 public void onClick(DialogInterface dialogInterface, int i) {
                     //معالجة حدث للمرافقة
                     Toast.makeText(MainActivityMovie.this, "Sing Out", Toast.LENGTH_SHORT).show();
